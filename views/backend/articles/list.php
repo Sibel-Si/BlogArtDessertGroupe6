@@ -17,7 +17,7 @@ $motsclesarticles = sql_select("MOTCLEARTICLE", "*");
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th>Id</th>
+                        <th>ID</th>
                         <th>Date</th>
                         <th>Titre</th>
                         <th>Chapeau</th>
