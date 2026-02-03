@@ -6,7 +6,7 @@ include '../../header.php';
 <!-- Bootstrap admin dashboard template -->
 <div>
     <hr class="my-3">
-    <div>Liens permettant d'administrer le Blog d'Articles</div>    
+    <div class="box-info">Liens permettant d'administrer le Blog d'Articles</div>    
     <hr class="my-3">
     <div class="container">
         <div class="row">

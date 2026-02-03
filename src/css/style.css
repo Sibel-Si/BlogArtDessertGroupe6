@@ -36,4 +36,10 @@
      border: 2px solid #E7A564;
  }
 
- 
+.box-info {
+    color: rgb(0, 0, 0);
+    background-color: #E7A564;
+    font-size: 30px;
+    padding-left: 3rem ;
+    word-wrap: break-word"
+}

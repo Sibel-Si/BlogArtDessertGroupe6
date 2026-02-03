@@ -1,3 +1,7 @@
+<?php
+//load config
+require_once 'config.php';
+?>
 <!DOCTYPE html>
 <html lang="fr-FR">
 <head>
@@ -12,12 +16,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Della+Respira&display=swap" rel="stylesheet">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="src/css/style.css" />
+    <link rel="stylesheet" href="<?php echo ROOT_URL . '/src/css/style.css' ?>" />
 </head>
-<?php
-//load config
-require_once 'config.php';
-?>
 <body>
 <nav class="navbar navbar-expand-lg bg-light">
   <div class="container-fluid">
