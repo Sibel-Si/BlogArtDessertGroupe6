@@ -5,6 +5,7 @@
 require_once $_SERVER['DOCUMENT_ROOT'] . '/config.php'; // Підключає конфіг (доступ до БД, константи)
 require_once '../../functions/ctrlSaisies.php';         // Функції для безпеки/перевірок (у вашому шаблоні)
 
+
 // 1) Забираємо numMemb з POST
 // Якщо поля немає — ставимо 0
 $numMemb = (int)($_POST['numMemb'] ?? 0);
