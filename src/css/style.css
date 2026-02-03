@@ -1,3 +1,17 @@
+ /*général*/
+ body {
+        font-family: 'Della Respira', serif;
+        background-color: #F7E6CA;
+        color: #561D0B;
+    }
+
+/*header*/
+
+    .navbar {
+        background-color: #E7A564;
+        color: #561D0B;
+    }
+ 
  /* Cookies */
  /* Couleurs personnalisées */
  .modal-header {
@@ -5,26 +19,6 @@
  }
 
  .modal-header h5 {
-     color: white;
- }
-
- .btn-primary {
-     background-color: #C66D25;
-     border-color: #C66D25;
- }
-
- .btn-primary:hover {
-     background-color: #561D0B;
-     border-color: #561D0B;
- }
-
- .btn-outline-primary {
-     color: #C66D25;
-     border-color: #C66D25;
- }
-
- .btn-outline-primary:hover {
-     background-color: #C66D25;
      color: white;
  }
 
@@ -36,4 +30,54 @@
      border: 2px solid #E7A564;
  }
 
- 
+
+/* Boutons */
+  .btn-tres-clair {
+     background-color: #F7E6CA;
+     outline-color: #F7E6CA;
+     color: #561D0B;
+ }
+
+ .btn-clair {
+     background-color: #E7A564;
+        outline-color: #E7A564;
+        color: #561D0B;
+ }
+
+ .btn-moyen {
+     background-color: #C66D25;
+        outline-color: #C66D25;
+        color: #F7E6CA;
+ }
+
+ .btn-fonce {
+     background-color: #561D0B;
+        outline-color: #561D0B;
+        color: #F7E6CA;
+ }
+
+/*champs et formulaires*/
+ input, textarea, select {
+     background-color: #F7E6CA;
+     color: #561D0B;
+     border: 2px solid #E7A564;
+     border-radius: 1em;
+     
+ }
+
+ input:focus, textarea:focus, select:focus {
+     background-color: #F7E6CA;
+     color: #561D0B;
+     border: 2px solid #C66D25;
+     outline: #561D0B;
+ }
+
+/* Dashboard Admin */
+.box-info {
+    color: rgb(0, 0, 0);
+    background-color: #E7A564;
+    font-size: 30px;
+    padding-left: 3rem ;
+    word-wrap: break-word"
+}
+

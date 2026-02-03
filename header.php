@@ -1,3 +1,7 @@
+<?php
+//load config
+require_once 'config.php';
+?>
 <!DOCTYPE html>
 <html lang="fr-FR">
 <head>
@@ -7,19 +11,17 @@
     <!-- Bootstrap CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous" />
     <link rel="shortcut icon" type="image/x-icon" href="src/images/article1.png" />
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Della+Respira&display=swap" rel="stylesheet">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="src/css/style.css" />
+    <link rel="stylesheet" href="<?php echo ROOT_URL . '/src/css/style.css' ?>" />
 </head>
-<?php
-//load config
-require_once 'config.php';
-?>
 <body>
-<nav class="navbar navbar-expand-lg bg-light">
+<nav class=" navbar-expand-lg navbar">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Blog'Art 25</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -28,24 +30,25 @@ require_once 'config.php';
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/">Home</a>
+          <a class="nav-link btn btn-fonce" aria-current="page" href="/">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/views/backend/dashboard.php">Admin</a>
+          <a class="nav-link btn btn-fonce" href="/views/backend/dashboard.php">Admin</a>
         </li>
       </ul>
     </div>
     <!--right align-->
     <div class="d-flex">
       <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Rechercher sur le site…" aria-label="Search" >
+          <input class="" type="search" placeholder="Rechercher sur le site…" aria-label="Search" >
       </form>
-      <a class="btn btn-primary m-1" href="/views/frontend/search.php" role="button">Recherche avancée</a>
-      <a class="btn btn-caramel m-1" href="/views/backend/security/login.php" role="button">Login</a>
-      <a class="btn btn-dark m-1" href="/views/backend/security/signup.php" role="button">Sign up</a>
+      <a class="btn btn-fonce m-1" href="/views/frontend/search.php" role="button">Recherche avancée</a>
+      <a class="btn btn-fonce m-1" href="/views/backend/security/login.php" role="button">Login</a>
+      <a class="btn btn-fonce m-1" href="/views/backend/security/signup.php" role="button">Sign up</a>
     </div>
   </div>
 </nav>
 
 <?php include_once __DIR__ . '/src/cookie_banner.php'; ?>
+
 
