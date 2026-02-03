@@ -1,0 +1,468 @@
+/* Les Délices Bordelais - Design Gourmand Artisanal */
+
+:root {
+    --beige-creme: #F5F1E8;
+    --beige-sable: #E8DCC8;
+    --caramel: #D4A574;
+    --marron: #5C3D2E;
+    --chocolat: #3D2817;
+    --gris-clair: #D3D3D3;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    background-color: var(--beige-creme);
+    font-family: 'Georgia', 'Garamond', serif;
+    color: var(--marron);
+}
+
+/* ===== PAGE D'ACCUEIL ===== */
+
+/* Boutons en haut à droite */
+.homepage-buttons {
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    display: flex;
+    gap: 15px;
+    z-index: 100;
+}
+
+.homepage-btn {
+    background-color: var(--chocolat);
+    color: white;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 50px;
+    font-size: 0.95em;
+    font-weight: bold;
+    cursor: pointer;
+    letter-spacing: 1.5px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-transform: uppercase;
+}
+
+.homepage-btn:hover {
+    background-color: var(--caramel);
+    color: var(--chocolat);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Bannière supérieure beige */
+.homepage-banner {
+    background-color: var(--beige-creme);
+    padding: 40px 20px;
+    text-align: center;
+    border-bottom: 5px solid var(--marron);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.homepage-title {
+    font-size: 3.5em;
+    color: var(--marron);
+    letter-spacing: 2px;
+    font-weight: normal;
+    margin: 0;
+}
+
+.emoji-cannele {
+    font-size: 2.5em;
+    margin-left: 15px;
+    vertical-align: middle;
+}
+
+/* Bandes rayures bicolores (marron et crème) */
+.homepage-stripes {
+    height: 150px;
+    background: repeating-linear-gradient(
+        90deg,
+        var(--marron) 0px,
+        var(--marron) 20px,
+        var(--beige-creme) 20px,
+        var(--beige-creme) 40px
+    );
+}
+
+/* Bande caramel centrale */
+.homepage-caramel-band {
+    background-color: var(--caramel);
+    padding: 40px 20px;
+    text-align: center;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.homepage-caramel-band h2 {
+    font-size: 2.2em;
+    color: white;
+    letter-spacing: 3px;
+    font-weight: normal;
+    text-transform: uppercase;
+}
+
+/* Section principale avec images */
+.homepage-content {
+    padding: 60px 40px;
+    background-color: var(--beige-creme);
+}
+
+.homepage-images {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: start;
+}
+
+/* Boîtes d'images */
+.image-box {
+    position: relative;
+    overflow: hidden;
+    border: 8px solid var(--marron);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    background-color: white;
+    aspect-ratio: 1;
+}
+
+.image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.image-box:hover img {
+    transform: scale(1.05);
+}
+
+/* Image cannelé (asymétrique haut gauche) */
+.image-cannele {
+    transform: rotate(-3deg);
+    grid-column: 1;
+    grid-row: 1;
+}
+
+/* Image fondant (asymétrique bas droite) */
+.image-fondant {
+    transform: rotate(2deg);
+    grid-column: 2;
+    grid-row: 2;
+    margin-top: 80px;
+}
+
+.image-caption {
+    background-color: var(--marron);
+    color: white;
+    padding: 15px;
+    text-align: center;
+    font-size: 1.1em;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* Décoration finale */
+.homepage-decoration {
+    text-align: center;
+    padding: 40px 20px;
+    font-size: 3em;
+    opacity: 0.3;
+    letter-spacing: 20px;
+    background-color: var(--beige-creme);
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 1024px) {
+    .homepage-images {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .image-fondant {
+        grid-column: 1;
+        grid-row: 2;
+        margin-top: 0;
+    }
+
+    .image-cannele {
+        grid-column: 1;
+        grid-row: 1;
+    }
+}
+
+@media (max-width: 768px) {
+    .homepage-buttons {
+        position: relative;
+        top: auto;
+        right: auto;
+        justify-content: center;
+        padding: 20px;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .homepage-title {
+        font-size: 2.5em;
+    }
+
+    .emoji-cannele {
+        font-size: 2em;
+        margin-left: 10px;
+    }
+
+    .homepage-caramel-band h2 {
+        font-size: 1.6em;
+        letter-spacing: 2px;
+    }
+
+    .homepage-stripes {
+        height: 100px;
+    }
+
+    .homepage-content {
+        padding: 40px 20px;
+    }
+
+    .homepage-images {
+        gap: 20px;
+    }
+
+    .image-box {
+        height: 300px;
+        aspect-ratio: auto;
+    }
+
+    .homepage-btn {
+        padding: 10px 20px;
+        font-size: 0.85em;
+    }
+
+    .homepage-decoration {
+        font-size: 2em;
+        letter-spacing: 10px;
+        padding: 30px 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .homepage-title {
+        font-size: 1.8em;
+        letter-spacing: 1px;
+    }
+
+    .emoji-cannele {
+        display: block;
+        font-size: 1.5em;
+        margin-left: 0;
+        margin-top: 10px;
+    }
+
+    .homepage-caramel-band h2 {
+        font-size: 1.2em;
+        letter-spacing: 1px;
+    }
+
+    .homepage-stripes {
+        height: 80px;
+    }
+
+    .image-box {
+        height: 250px;
+    }
+
+    .homepage-btn {
+        padding: 8px 16px;
+        font-size: 0.75em;
+    }
+
+    .homepage-decoration {
+        font-size: 1.5em;
+        letter-spacing: 5px;
+    }
+
+    .homepage-content {
+        padding: 30px 15px;
+    }
+
+    .homepage-images {
+        gap: 15px;
+    }
+}
+
+/* ===== FORM STYLES (pour signup.php et autres) ===== */
+.form-container {
+    background-color: var(--beige-creme);
+    max-width: 500px;
+    margin: 60px auto;
+    padding: 40px;
+    border-radius: 10px;
+    position: relative;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.form-title {
+    text-align: center;
+    font-size: 2em;
+    color: var(--marron);
+    margin-bottom: 30px;
+    letter-spacing: 1px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    color: var(--marron);
+    font-size: 1em;
+    margin-bottom: 8px;
+    font-weight: normal;
+    letter-spacing: 0.5px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"],
+.form-group input[type="search"],
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    background-color: var(--beige-sable);
+    border: 2px solid var(--marron);
+    border-radius: 8px;
+    font-family: 'Georgia', serif;
+    color: var(--marron);
+    font-size: 1em;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--caramel);
+    box-shadow: 0 0 8px rgba(212, 165, 116, 0.3);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: var(--gris-clair);
+}
+
+.form-buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+    justify-content: center;
+}
+
+.btn-create {
+    background-color: var(--caramel);
+    color: white;
+    border: none;
+    padding: 14px 35px;
+    border-radius: 50px;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn-create:hover {
+    background-color: var(--chocolat);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.btn-secondary {
+    background-color: var(--beige-sable);
+    color: var(--marron);
+    border: 2px solid var(--marron);
+    padding: 12px 25px;
+    border-radius: 5px;
+    font-size: 0.95em;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-secondary:hover {
+    background-color: var(--marron);
+    color: white;
+    text-decoration: none;
+}
+
+.captcha-box {
+    background-color: var(--beige-sable);
+    border: 2px solid var(--marron);
+    padding: 15px;
+    border-radius: 8px;
+    margin: 20px 0;
+    text-align: center;
+    color: var(--marron);
+    font-size: 0.9em;
+}
+
+.form-decoration-1,
+.form-decoration-2,
+.form-decoration-3,
+.form-decoration-4 {
+    position: absolute;
+    font-size: 3em;
+    opacity: 0.08;
+}
+
+.form-decoration-1 {
+    top: 20px;
+    left: 20px;
+}
+
+.form-decoration-2 {
+    top: 50%;
+    right: 30px;
+    font-size: 2.5em;
+}
+
+.form-decoration-3 {
+    bottom: 30px;
+    left: 30px;
+    font-size: 2.5em;
+}
+
+.form-decoration-4 {
+    bottom: 50px;
+    right: 50px;
+}
+
+/* ===== UTILITY CLASSES ===== */
+.text-center {
+    text-align: center;
+}
+
+.mt-large {
+    margin-top: 40px;
+}
+
+.mb-large {
+    margin-bottom: 40px;
+}

@@ -1,5 +1,28 @@
 <?php
 include '../../../header.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/config.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/functions/ctrlSaisies.php';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $numMemb = ctrlSaisies($_POST['numMemb']);
+
+    // --- GESTION DES CIR (Contraintes d'Intégrité Référentielle) ---
+
+    // 1. Suppression de tous les LIKES postés par le membre
+    // (Table d'après tes erreurs précédentes : LIKEART)
+    sql_delete("LIKEART", "numMemb = $numMemb");
+
+    // 2. Suppression de tous les COMMENTAIRES postés par le membre
+    // (Table d'après tes erreurs précédentes : COMMENT)
+    sql_delete("COMMENT", "numMemb = $numMemb");
+
+    // 3. Enfin, suppression du MEMBRE
+    sql_delete("MEMBRE", "numMemb = $numMemb");
+
+    // Redirection vers la liste
+    header('Location: /views/backend/members/list.php');
+    exit();
+}
 
 
 
@@ -103,6 +126,7 @@ $dtCreation = isset($member['dtCreaMemb']) ? date('d/m/Y H:i:s', strtotime($memb
         </div>
     </div>
 </div>
+
 
 <!-- reCAPTCHA -->
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
