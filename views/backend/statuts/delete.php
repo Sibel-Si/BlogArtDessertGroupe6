@@ -28,7 +28,7 @@ if(isset($_GET['numStat'])){
             <form action="<?php echo ROOT_URL . '/api/statuts/delete.php' ?>" method="post">
                 <div class="form-group">
                     <label for="libStat">Id du statut</label>
-                    <input id="numStat" name="numStat" class="form-control" style="display: none" type="text" value="<?php echo($numStat); ?>" readonly="readonly" />
+                    <input id="numStat" name="numStat" class="form-control"  type="text" value="<?php echo($numStat); ?>" readonly="readonly" disabled/>
                 </div>
                 <div class="form-group">
                     <label for="libStat">Nom du statut</label>
