@@ -23,7 +23,10 @@ require_once 'config.php';
 <body>
 <nav class=" navbar-expand-lg navbar">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Blog'Art 25</a>
+    <div>
+      <img src="<?php echo ROOT_URL . '/src/images/logoBlogArt.png'?>" alt="Logo Les Délices Bordelais" width="50" height="50" class="d-inline-block align-text-top m-1">
+      <a class="navbar-brand navbar d-inline-block  align-text-top" href="#">Les Délices Bordelais</a>
+    </div>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
