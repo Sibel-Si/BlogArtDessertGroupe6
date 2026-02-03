@@ -26,7 +26,7 @@ $motscleschoisis = array();
                 <br />
                 <div class="form-group">
                     <label for="dtCreaArt">Date de rédaction</label>
-                    <input id="dtCreaArt" name="dtCreaArt" class="form-control" type="text" value=<?php echo(date('y/m/d')) ?> readonly="readonly"/>
+                    <input id="dtCreaArt" name="dtCreaArt" class="form-control" type="text" value=<?php echo(date('y/m/d/h/i/s')) ?> readonly="readonly"/>
                 </div>
                 <br />
                 <div class="form-group">
