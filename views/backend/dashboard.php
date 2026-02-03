@@ -82,6 +82,7 @@ include '../../header.php';
                             <td></td>
                         </tr>
                     </tbody>
+                </table>
             </div>
         </div>
     </div>
