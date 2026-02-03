@@ -20,23 +20,29 @@
 /* Boutons */
   .btn-success {
      background-color: #F7E6CA;
+     outline-color: #F7E6CA;
+     color: #561D0B;
  }
 
  .btn-primary {
      background-color: #E7A564;
+        outline-color: #E7A564;
+        color: #561D0B;
  }
 
  .btn-warning {
      background-color: #C66D25;
+        outline-color: #C66D25;
+        color: #F7E6CA;
  }
 
  .btn-danger {
      background-color: #561D0B;
+        outline-color: #561D0B;
+        color: #F7E6CA;
  }
 
- .btn-primary:hover {
-     background-color: #561D0B;
- }
+/* Dashboard Admin */
 .box-info {
     color: rgb(0, 0, 0);
     background-color: #E7A564;
