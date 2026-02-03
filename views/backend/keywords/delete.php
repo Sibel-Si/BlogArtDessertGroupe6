@@ -1,3 +1,43 @@
 <?php
 include '../../../header.php';
 
+if(isset($_GET['numMotCle'])){
+    $numMotCle = $_GET['numMotCle'];
+    $libMotCle = sql_select("MOTCLE", "libMotCle", "numMotCle = $numMotCle")[0]['libMotCle'];
+    
+    $articleWithMotCle = sql_select('MOTCLEARTICLE', 'COUNT(*) as count', "numMotCle = $numMotCle");
+    $articleCount = $articleWithMotCle[0]['count'] ?? 0;
+
+    }
+?>
+
+<!-- Bootstrap form to create a new statut -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Suppression Mot Clé</h1>
+        </div>
+
+        <?php if($articleCount > 0): ?>
+        <div class="alert alert-warning" role="alert">
+            <strong>⚠️ Attention !</strong> Ce Mot Clé est utilisée par <strong><?php echo $articleCount; ?></strong> article(s). La suppression n'est pas possible tant que des articles sont associés à ce mot clé.
+        </div>
+        <?php endif; ?>
+
+        <div class="col-md-12">
+            <!-- Form to create a new statut -->
+            <form action="<?php echo ROOT_URL . '/api/keywords/delete.php' ?>" method="post">
+                <div class="form-group">
+                    <label for="libMotCle">Nom du mot clé</label>
+                    <input id="numMotCle" name="numStat" class="form-control" style="display: none" type="text" value="<?php echo($numMotCle); ?>" readonly="readonly" />
+                    <input id="libMotCle" name="libMotCle" class="form-control" type="text" value="<?php echo($libMotCle); ?>" readonly="readonly" disabled />
+                </div>
+                <br />
+                <div class="form-group mt-2">
+                    <a href="list.php" class="btn btn-primary">List</a>
+                    <button type="submit" class="btn btn-danger">Confirmer delete ?</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

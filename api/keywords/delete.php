@@ -4,6 +4,7 @@ require_once '../../functions/ctrlSaisies.php';
 
 $numMotCle = ($_POST['numMotCle']);
 
+
 sql_delete('MOTCLE', "numMotCle = $numMotCle");
 
 
