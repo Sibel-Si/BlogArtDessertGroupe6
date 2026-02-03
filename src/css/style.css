@@ -8,26 +8,6 @@
      color: white;
  }
 
- .btn-primary {
-     background-color: #C66D25;
-     border-color: #C66D25;
- }
-
- .btn-primary:hover {
-     background-color: #561D0B;
-     border-color: #561D0B;
- }
-
- .btn-outline-primary {
-     color: #C66D25;
-     border-color: #C66D25;
- }
-
- .btn-outline-primary:hover {
-     background-color: #C66D25;
-     color: white;
- }
-
  .text-cookie {
      color: #561D0B;
  }
@@ -35,3 +15,32 @@
  .modal-content {
      border: 2px solid #E7A564;
  }
+
+
+/* Boutons */
+  .btn-success {
+     background-color: #F7E6CA;
+ }
+
+ .btn-primary {
+     background-color: #E7A564;
+ }
+
+ .btn-warning {
+     background-color: #C66D25;
+ }
+
+ .btn-danger {
+     background-color: #561D0B;
+ }
+
+ .btn-primary:hover {
+     background-color: #561D0B;
+ }
+.box-info {
+    color: rgb(0, 0, 0);
+    background-color: #E7A564;
+    font-size: 30px;
+    padding-left: 3rem ;
+    word-wrap: break-word"
+}
