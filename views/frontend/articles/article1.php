@@ -31,7 +31,7 @@ $parag2Art = $article['parag2Art'] ?? "Deuxième paragraphe";
 $libSsTitr2Art = $article['libSsTitr2Art'] ?? "Second sous-titre";
 $parag3Art = $article['parag3Art'] ?? "Troisième paragraphe";
 $libConclArt = $article['libConclArt'] ?? "Conclusion de l'article";
-$imagePath = $article['urlPhotArt'] ?? "/src/uploads/default.png";
+$urlPhotArt = $article['urlPhotArt'] ?? "/src/uploads/default.png";
 
 // Fetch necessary data from the database
 $themes = sql_select("THEMATIQUE", "*", "numArt = $numArt");
@@ -46,42 +46,40 @@ $motscles = sql_select("MOTCLE", "*", "numMotCle = $numMotCles");
 
 <main class="container">
 	<article class="article-template">
-		<h1><?php echo esc($title); ?></h1>
+		<h1><?php echo $libTitrArt; ?></h1>
 
-		<p class="meta">Publié le <time datetime="<?php echo esc($created_at); ?>"><?php echo esc($displayDate); ?></time></p>
+		<p class="meta">Publié le <time datetime="<?php echo $dtCreaArt; ?>"></time></p>
 
-		<p class="chapeau"><strong>Chapeau:</strong> <?php echo esc($chapeau); ?></p>
+		<p class="chapeau"><?php echo $libChapoArt; ?></p>
 
-		<p class="accroche"><em>Accroche:</em> <?php echo esc($accroche); ?></p>
+		<p class="accroche"> <?php echo $libAccrochArt; ?></p>
+
+        <img src="<?php echo $urlPhotArt; ?>" style="max-width:50%;height:auto;">
 
 		<section>
-			<p><?php echo nl2br(esc($paragraph1)); ?></p>
+			<p><?php echo $parag1Art; ?></p>
 		</section>
 
-		<h2><?php echo esc($subtitle1); ?></h2>
+		<h2><?php echo $libSsTitr1Art; ?></h2>
 		<section>
-			<p><?php echo nl2br(esc($paragraph2)); ?></p>
+			<p><?php echo $parag2Art; ?></p>
 		</section>
 
-		<h2><?php echo esc($subtitle2); ?></h2>
+		<h2><?php echo $libSsTitr2Art; ?></h2>
 		<section>
-			<p><?php echo nl2br(esc($paragraph3)); ?></p>
+			<p><?php echo $parag3Art; ?></p>
 		</section>
 
 		<section class="conclusion">
-			<h3>Conclusion</h3>
-			<p><?php echo nl2br(esc($conclusion)); ?></p>
+			<h3></h3>
+			<p><?php echo $libConclArt; ?></p>
 		</section>
 
 		<aside class="meta-data">
-			<p><strong>Thématique:</strong> <?php echo esc($theme); ?></p>
-			<p><strong>Mots-clés:</strong> <?php echo $keywordsStr; ?></p>
+			<p> <?php echo $theme; ?></p>
+			<p> Mots Clés: <?php foreach ($motscles as $motcle) {  echo $motcle['libMotCle'] . ' '; } ?></p>
 		</aside>
 
-		<figure>
-			<img src="<?php echo esc($imagePath); ?>" alt="<?php echo esc($imageAlt); ?>" style="max-width:100%;height:auto;">
-			<figcaption><?php echo esc($imageCaption); ?></figcaption>
-		</figure>
 	</article>
 </main>
 
