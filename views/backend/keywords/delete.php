@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-require_once 'functions/your_script_name.php';
+require_once ROOT_URL . '/functions/security.php';
 
 // Define the required level (e.g., 1 for Admin, 2 for Moderator)
 $required_level = 1; 

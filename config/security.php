@@ -9,3 +9,9 @@
  // define constant ID_USER if user is logged in with define function
 
 ?>
+
+
+
+<?php if (check_access(1)): ?>
+    <button class="btn-admin">Delete User</button>
+<?php endif; ?>
