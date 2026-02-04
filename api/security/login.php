@@ -1,58 +1,54 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'] . '/config.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/config/pdo.php'; // тут є $pdo
-require_once $_SERVER['DOCUMENT_ROOT'] . '/functions/ctrlSaisies.php';
-
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-$pseudo = isset($_POST['pseudoMemb']) ? trim(ctrlSaisies($_POST['pseudoMemb'])) : '';
-$pass   = isset($_POST['passMemb'])   ? trim(ctrlSaisies($_POST['passMemb']))   : '';
+// Config + functions (CRUD, ctrlSaisies, etc.)
+require_once __DIR__ . '/../../config.php';
+require_once __DIR__ . '/../../functions/global.inc.php';
+require_once __DIR__ . '/../../functions/ctrlSaisies.php';
 
+// 1. Vérifier que le formulaire est envoyé
+if (!isset($_POST['pseudoMemb'], $_POST['passMemb'])) {
+    header('Location: /views/backend/security/login.php');
+    exit;
+}
+
+// 2. Sécurisation des saisies (fonction fournie)
+$pseudo = ctrlSaisies($_POST['pseudoMemb']);
+$pass   = ctrlSaisies($_POST['passMemb']);
+
+// 3. Vérification champs vides
 if ($pseudo === '' || $pass === '') {
-    $_SESSION['login_error'] = "Pseudo ou mot de passe manquant.";
+    $_SESSION['login_error'] = "Champs obligatoires manquants.";
     header('Location: /views/backend/security/login.php');
     exit;
 }
 
-$stmt = $pdo->prepare("SELECT * FROM membre WHERE pseudoMemb = :pseudo LIMIT 1");
-$stmt->execute([':pseudo' => $pseudo]);
-$m = $stmt->fetch(PDO::FETCH_ASSOC);
+// 4. Récupération du membre (CRUD -> SELECT)
+$membre = sql_select(
+    'membre',
+    '*',
+    "pseudoMemb = '$pseudo'"
+);
 
-if (!$m) {
+// 5. Vérifier si le membre existe
+if (!$membre || count($membre) !== 1) {
     $_SESSION['login_error'] = "Pseudo ou mot de passe incorrect.";
     header('Location: /views/backend/security/login.php');
     exit;
 }
 
-// пароль у тебе зараз у відкритому вигляді (12345678), тому порівняння таке:
-$passDb = $m['passMemb'] ?? '';
-$isOk = false;
-
-// якщо потім зробиш password_hash(), це теж буде працювати:
-if (is_string($passDb) && str_starts_with($passDb, '$2y$')) {
-    $isOk = password_verify($pass, $passDb);
-} else {
-    $isOk = hash_equals((string)$passDb, (string)$pass);
-}
-
-if (!$isOk) {
+// 6. Vérification du mot de passe (PLAIN TEXT)
+if ($pass !== $membre[0]['passMemb']) {
     $_SESSION['login_error'] = "Pseudo ou mot de passe incorrect.";
     header('Location: /views/backend/security/login.php');
     exit;
 }
 
-// OK
-$_SESSION['numMemb']    = (int)$m['numMemb'];
-$_SESSION['pseudoMemb'] = $m['pseudoMemb'];
-$_SESSION['numStat']    = (int)$m['numStat'];
+// 7. Connexion réussie → session
+$_SESSION['id_user'] = $membre[0]['numMemb'];
 
-// Redirection : admin/modo -> back, membre -> front
-// (якщо у вас інші значення numStat — просто поміняєш умову)
-if ($_SESSION['numStat'] !== 1) {
-    header('Location: /');
-} else {
-    header('Location: /views/backend/dashboard.php');
-}
+// 8. Redirection après login
+header('Location: /');
 exit;

@@ -1,69 +1,63 @@
 <?php
+// Header (contient config + session_start)
 include '../../../header.php';
 
+// Récupération du message d’erreur
 $err = $_SESSION['login_error'] ?? '';
 unset($_SESSION['login_error']);
 ?>
 
-<?php if (!empty($err)) : ?>
-    <div class="alert alert-danger"><?= htmlspecialchars($err) ?></div>
-<?php endif; ?>
-
 <div class="container mt-5" style="max-width: 500px;">
-    
+
     <h2 class="mb-4 text-center">
-        <i class="bi bi-person"></i> Se connecter
+        Se connecter
     </h2>
 
+    <!-- Message d’erreur -->
+    <?php if (!empty($err)) : ?>
+        <div class="alert alert-danger">
+            <?= htmlspecialchars($err) ?>
+        </div>
+    <?php endif; ?>
+
+    <!-- Formulaire de connexion -->
     <form method="post" action="/api/security/login.php">
 
-        <!-- PSEUDO -->
-        <label class="form-label">Pseudo</label>
-        <input type="text" name="pseudoMemb" class="form-control"  required >
-
-        <!-- PASSWORD -->
-        <label class="form-label mt-3">Mot de passe</label>
-        <input type="password" name="passMemb" class="form-control" required >
-
-        <!-- AFFICHER MDP -->
-        <div class="form-check mt-2">
-            <input class="form-check-input" type="checkbox" id="showPass" onclick="togglePassword()">
-            <label class="form-check-label" for="showPass">
-                Afficher MDP
-            </label>
+        <div class="mb-3">
+            <label for="pseudoMemb" class="form-label">Pseudo</label>
+            <input
+                type="text"
+                class="form-control"
+                id="pseudoMemb"
+                name="pseudoMemb"
+                required
+            >
         </div>
 
-        <!-- CAPTCHA (visuel seulement ) -->
-        <div class="mt-3">
-            <button type="button" class="btn btn-light w-100" disabled>
-                Captcha
-            </button>
+        <div class="mb-3">
+            <label for="passMemb" class="form-label">Mot de passe</label>
+            <input
+                type="password"
+                class="form-control"
+                id="passMemb"
+                name="passMemb"
+                required
+            >
         </div>
 
-        <!-- SUBMIT -->
-        <div class="mt-4">
-            <button type="submit" class="btn btn-clair w-100">
+        <div class="d-grid gap-2">
+            <button type="submit" class="btn btn-success">
                 Se connecter
             </button>
         </div>
 
-        <!-- SIGNUP -->
         <div class="text-center mt-3">
             <a href="/views/backend/security/signup.php">
-                Pas de compte ? Créer un
+                Pas encore de compte ? S’inscrire
             </a>
         </div>
+
     </form>
 </div>
 
-<script>
-function togglePassword() {
-    const input = document.querySelector('input[name="passMemb"]');
-    input.type = (input.type === 'password') ? 'text' : 'password';
-}
-</script>
-
-<?php
-include $_SERVER['DOCUMENT_ROOT'] . '/footer.php';
-?>
-
+<?php include '../../../footer.php'; ?>
