@@ -119,3 +119,76 @@ article.article-template {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
 }
+
+article h2{
+    padding-right: 20px;
+    padding-left: 40px;
+    padding-bottom: 10px;
+}
+
+article p{
+    padding-bottom: 50px;
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+.meta {
+    font-size: 14px;
+    color: #E7A564;
+    margin: 10px;
+}
+
+.meta p {
+    margin-right: 30px;
+}
+
+.chapo-photo {
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 50px;
+    margin-top: 30px;
+}
+
+.separateur {
+    background-color: #C66D25;
+    color: #F7E6CA;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 50px;
+    margin-top: 30px;
+    display: flex;            /* Required for alignment properties to work */
+    justify-content: center;  /* Centers content horizontally */
+    align-items: center;      /* Centers content vertically */
+}
+
+.separateur img {
+    width: auto;
+    height: 50px;
+}
+
+.separateur p {
+    margin: 0;
+    font-size: 18px;
+}
+
+.comments-section {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 2px solid #E7A564;
+}
+
+.comments-section h3 {
+    padding-bottom: 30px;
+}
+
+.comments-section a {
+    margin: 20px;
+}
+
+.comments {
+    width: fit-content; /* Add this line */
+    background-color: #E7A564;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 10px;
+}

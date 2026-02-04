@@ -6,6 +6,9 @@ require_once '../../../header.php';
 // Get the article ID from URL parameter
 $numArt = isset($_GET['numArt']) ? (int)$_GET['numArt'] : 1;
 
+// Get numMemb from session cookies
+$numMemb = 0;
+
 // Validate article ID exists before querying
 if ($numArt <= 0) {
     header("Location: list.php");
@@ -34,10 +37,8 @@ $libConclArt = $article['libConclArt'] ?? "Conclusion de l'article";
 $urlPhotArt = $article['urlPhotArt'] ?? "/src/uploads/default.png";
 
 // Fetch necessary data from the database
-$themes = sql_select("THEMATIQUE", "*");
-
-$numThem = $article['numThem'] ?? 0;
-$theme = $themes['numThem'] ?? "Thématique par défaut";
+$theme = sql_select("THEMATIQUE", "libThem", "numThem = " . $article['numThem']);
+$theme = !empty($theme) ? $theme[0]['libThem'] : "Thématique par défaut";
 
 $motsClesArt = sql_select("MOTCLEARTICLE", "numMotCle", "numArt = $numArt");
 if (!empty($motsClesArt)) {
@@ -61,15 +62,28 @@ $nbComments = count($comments);
 	<article class="article-template">
 		<h1><?php echo $libTitrArt; ?></h1>
 
-		<p class="meta">Publié le <?php echo $dtCreaArt; ?></p>
-		<p class="meta">Nombre de commentaires : <?php  echo $nbComments; ?></p>
-        <p class="meta">Nombre de likes : <?php  echo $nbLikes; ?></p>
+		<div class="d-flex meta">
+			<p>Publié le <?php echo $dtCreaArt; ?></p>
+			<p>Nombre de commentaires : <?php  echo $nbComments; ?></p>
+        	<p>Nombre de likes : <?php  echo $nbLikes; ?></p>
+		</div>
 
-		<p class="chapeau"><?php echo $libChapoArt; ?></p>
+		<div class="d-flex chapo-photo">
+			<div>
+				<p class="chapeau"><?php echo $libChapoArt; ?></p>
+				<p class="accroche"> <?php echo $libAccrochArt; ?></p>
+			</div>
+        	<img src="../../../src/uploads/<?php echo $urlPhotArt; ?>" style="max-width:50%;height:auto;">
+		</div>
 
-		<p class="accroche"> <?php echo $libAccrochArt; ?></p>
-
-        <img src="<?php echo $urlPhotArt; ?>" style="max-width:50%;height:auto;">
+		<div class="d-flex separateur">
+			<img src="../../../src/images/canele-illu.png" alt="">
+			<p>CANELES</p>
+			<img src="../../../src/images/croissant-illu.png" alt="">
+			<p>CROISSANTS</p>
+			<img src="../../../src/images/pain-illu.png" alt="">
+			<p>PAINS</p>
+		</div>
 
 		<section>
 			<p><?php echo $parag1Art; ?></p>
@@ -90,30 +104,49 @@ $nbComments = count($comments);
 			<p><?php echo $libConclArt; ?></p>
 		</section>
 
-		<aside class="meta-data">
-			<p> <?php echo $theme; ?></p>
+		<div class="d-flex separateur">
+			<img src="../../../src/images/canele-illu.png" alt="">
+			<p>CANELES</p>
+			<img src="../../../src/images/croissant-illu.png" alt="">
+			<p>CROISSANTS</p>
+			<img src="../../../src/images/pain-illu.png" alt="">
+			<p>PAINS</p>
+		</div>
+
+		<aside class="d-flex meta">
+			<p> Thématique: <?php echo $theme; ?></p>
 			<p> Mots Clés: <?php foreach ($motscles as $motcle) {  echo $motcle['libMotCle'] . ' '; } ?></p>
 		</aside>
 
-        <div>
-            <button type="">Like</button>
+<!-- Restrindre l'affichage de cette section au utulisateurs non connectés -------------->
+        <div like>
+			<form action="<?php echo ROOT_URL . '/api/likes/create.php' ?>" method="post">
+        		<input type="hidden" name="numMemb" value="<?php echo($numMemb)?>">
+				<input type="hidden" name="numArt" value="<?php echo($numArt)?>">
+          	<button type="submit" class="btn btn-foncé">❤ Like</button>
+			</form>
         </div>
-        <div>
+
+
+        <div class="comments-section">
             <h3>Commentaires (<?php echo $nbComments; ?>)</h3>
             <?php foreach ($comments as $comment) { ?>
-                <div><?php					
+                <div class="comments"><?php					
                     $membre = sql_select("MEMBRE", "*", "numMemb = " . $comment['numMemb']);
 					$pseudo = !empty($membre) ? $membre[0]['pseudoMemb'] : "Anonyme";
-					echo htmlspecialchars($pseudo."a écrit :"); 
+					echo htmlspecialchars($pseudo." a écrit : "); 
                     echo nl2br(htmlspecialchars($comment['libCom']));
 				?></div>
             <?php } ?>
-            <a href="../comments/commentaire.php" class="btn">Ajouter un commentaire</a>
-
+            <a href="../comments/commentaire.php" class="btn btn-fonce">Ajouter un commentaire</a>
         </div>
+
+		<!---------------------------- Fin section restriente ---------------------------->
+
 
 	</article>
 </main>
+
 
 <?php
 require_once '../../../footer.php';
