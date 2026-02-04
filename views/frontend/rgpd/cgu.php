@@ -8,9 +8,9 @@ require_once '../../../header.php';
     <br />
     <p> L'éditeur du site BlogArt'26 est hébergé par l'Institut Universitaire et Technologique Bordeaux Montaigne (1 Rue Jacques Ellul, 33800 Bordeaux, France).
         Numéro de téléphone :
-        0557122044 (à voir s'il faut utiliser un autre numéro de téléphone)
+        0557122044
         Adresse Mail :
-        accueil-iut@iut.u-bordeaux-montaigne.fr (à voir s'il faut utiliser une autre adresse mail)
+        accueil-iut@iut.u-bordeaux-montaigne.fr
         Ceci fait partie du cadre d'un projet universtiaire. 
         Dernière rédaction : Février 2026
     </p>

@@ -1,13 +1,16 @@
 <?php
 include '../../../header.php';
 ?>
+
+<script src="https://www.google.com/recaptcha/api.js?render=6LcBgWAsAAAAAJXlt-QCfOoIE1-qSXXHNFCa0usb"></script>
+
 <div class="container mt-5" style="max-width: 500px;">
 
     <h2 class="mb-4 text-center">
         <i class="bi bi-person-plus"></i> Inscription
     </h2>
 
-    <form method="post" action="/api/security/signup.php">
+    <form id="signupForm" method="post" action="/api/security/signup.php">
 
         <label class="form-label">Pseudo (non modifiable)</label>
         <input type="text" name="pseudoMemb" class="form-control" required>
@@ -42,6 +45,8 @@ include '../../../header.php';
             </div>
         </div>
 
+        <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response">
+        
         <div class="mt-4">
             <button type="submit" class="btn btn-success w-100">Créer mon compte</button>
         </div>
@@ -49,13 +54,26 @@ include '../../../header.php';
     </form>
 </div>
 
+
+
 <script>
+document.getElementById('signupForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    grecaptcha.ready(function() {
+        grecaptcha.execute('6LcBgWAsAAAAAJXlt-QCfOoIE1-qSXXHNFCa0usb', {action: 'submit'}).then(function(token) {
+            document.getElementById('g-recaptcha-response').value = token;
+            document.getElementById('signupForm').submit();
+        });
+    });
+});
+
 function togglePassword() {
     const pass1 = document.querySelector('input[name="passMemb"]');
     const pass2 = document.querySelector('input[name="passMembConfirm"]');
-
-    pass1.type = (pass1.type === 'password') ? 'text' : 'password';
-    pass2.type = (pass2.type === 'password') ? 'text' : 'password';
+    const type = (pass1.type === 'password') ? 'text' : 'password';
+    pass1.type = type;
+    pass2.type = type;
 }
 </script>
 
