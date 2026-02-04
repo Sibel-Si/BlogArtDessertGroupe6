@@ -47,8 +47,13 @@ if ($pass !== $membre[0]['passMemb']) {
 }
 
 // 7. Connexion réussie → session
-$_SESSION['id_user'] = $membre[0]['numMemb'];
+$_SESSION['id_user '] = $membre[0]['numMemb'];
+$_SESSION['pseudoMemb'] = $membre[0]['pseudoMemb'];
+$_SESSION['numStat'] = (int)$membre[0]['numStat']; // Store the status (1 for admin, etc.)
 
 // 8. Redirection après login
 header('Location: /');
 exit;
+
+
+?>
