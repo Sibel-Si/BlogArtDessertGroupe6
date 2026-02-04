@@ -1,6 +1,7 @@
 <!-- Load JS scripts -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-</body>
+<script href="css/style.css"></script>
+
 
 <footer>
 	<!-- footer -->
@@ -20,7 +21,9 @@
 	</div>
 	<div>
 		<p>Mentions légales</p>
-		<p href ="views/frontend/rgpd/rgpd.php">RGPD</p>
-		<p href ="views/frontend/rgpd/cgu.php">CGU</p>
+		<p><a href="/views/frontend/rgpd/rgpd.php">RGPD</a></p>
+		<p><a href="/views/frontend/rgpd/cgu.php">CGU</a></p>
+	</div>
 </footer>
+</body>
 </html>
