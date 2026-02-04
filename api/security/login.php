@@ -1,30 +1,58 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . '/config.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/config/pdo.php'; // тут є $pdo
 require_once $_SERVER['DOCUMENT_ROOT'] . '/functions/ctrlSaisies.php';
 
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
-$pseudo = $_POST['pseudoMemb'] ?? '';
-$pass   = $_POST['passMemb'] ?? '';
+$pseudo = isset($_POST['pseudoMemb']) ? trim(ctrlSaisies($_POST['pseudoMemb'])) : '';
+$pass   = isset($_POST['passMemb'])   ? trim(ctrlSaisies($_POST['passMemb']))   : '';
 
-// Тут у тебе ВЖЕ є logique membre → tu peux la brancher plus tard
-// Для MMI достатньо redirect
-
-// Exemple simple (à adapter à ton code existant)
-$membre = sql_select(
-    "membre",
-    "*",
-    "pseudoMemb = '$pseudo'"
-);
-
-if (!empty($membre)) {
-    $_SESSION['numMemb'] = $membre[0]['numMemb'];
-    $_SESSION['pseudoMemb'] = $membre[0]['pseudoMemb'];
-
-    header('Location: /');
+if ($pseudo === '' || $pass === '') {
+    $_SESSION['login_error'] = "Pseudo ou mot de passe manquant.";
+    header('Location: /views/backend/security/login.php');
     exit;
 }
 
-// Sinon
-header('Location: /views/backend/security/login.php');
+$stmt = $pdo->prepare("SELECT * FROM membre WHERE pseudoMemb = :pseudo LIMIT 1");
+$stmt->execute([':pseudo' => $pseudo]);
+$m = $stmt->fetch(PDO::FETCH_ASSOC);
+
+if (!$m) {
+    $_SESSION['login_error'] = "Pseudo ou mot de passe incorrect.";
+    header('Location: /views/backend/security/login.php');
+    exit;
+}
+
+// пароль у тебе зараз у відкритому вигляді (12345678), тому порівняння таке:
+$passDb = $m['passMemb'] ?? '';
+$isOk = false;
+
+// якщо потім зробиш password_hash(), це теж буде працювати:
+if (is_string($passDb) && str_starts_with($passDb, '$2y$')) {
+    $isOk = password_verify($pass, $passDb);
+} else {
+    $isOk = hash_equals((string)$passDb, (string)$pass);
+}
+
+if (!$isOk) {
+    $_SESSION['login_error'] = "Pseudo ou mot de passe incorrect.";
+    header('Location: /views/backend/security/login.php');
+    exit;
+}
+
+// OK
+$_SESSION['numMemb']    = (int)$m['numMemb'];
+$_SESSION['pseudoMemb'] = $m['pseudoMemb'];
+$_SESSION['numStat']    = (int)$m['numStat'];
+
+// Redirection : admin/modo -> back, membre -> front
+// (якщо у вас інші значення numStat — просто поміняєш умову)
+if ($_SESSION['numStat'] !== 1) {
+    header('Location: /');
+} else {
+    header('Location: /views/backend/dashboard.php');
+}
 exit;
