@@ -3,7 +3,6 @@ include '../../../header.php';
 ?>
 <div class="container mt-5" style="max-width: 500px;">
 
-<<<<<<< Updated upstream
     <h2 class="mb-4 text-center">
         <i class="bi bi-person-plus"></i> Inscription
     </h2>
@@ -48,66 +47,6 @@ include '../../../header.php';
         </div>
 
     </form>
-=======
-<!-- CARAMEL MAIN BAND WITH "NOM DU BLOG" -->
-<div class="main-caramel-band">
-    <h2>INSCRIPTIONS</h2>
-</div>
-
-<div class="form-container">
-    <div class="form-card">
-        <h3>👤 Créer un Compte</h3>
-        
-        <form action="<?php echo ROOT_URL . '/api/members/create.php' ?>" method="post" onsubmit="return validateSignupForm()">
-            
-            <div class="form-group">
-                <label for="pseudo">Pseudo *</label>
-                <input id="pseudo" name="pseudo" type="text" placeholder="Choisissez votre pseudo" required />
-            </div>
-
-            <div class="form-group">
-                <label for="firstName">Prénom *</label>
-                <input id="firstName" name="firstName" type="text" placeholder="Votre prénom" required />
-            </div>
-
-            <div class="form-group">
-                <label for="lastName">Nom *</label>
-                <input id="lastName" name="lastName" type="text" placeholder="Votre nom" required />
-            </div>
-
-            <div class="form-group">
-                <label for="email">E-Mail *</label>
-                <input id="email" name="email" type="email" placeholder="Votre adresse e-mail" required />
-            </div>
-
-            <div class="form-group">
-                <label for="password">Mot de Passe *</label>
-                <input id="password" name="password" type="password" placeholder="Entrez un mot de passe sécurisé" required />
-            </div>
-
-            <div class="captcha-box">
-                🔒 Captcha - Vérification de sécurité
-            </div>
-
-            <?php if(isset($_SESSION['error_message'])): ?>
-                <div style="background-color: #ffcccc; border: 2px solid #cc0000; padding: 12px; border-radius: 8px; color: #cc0000; margin: 15px 0;">
-                    <?php echo $_SESSION['error_message']; unset($_SESSION['error_message']); ?>
-                </div>
-            <?php endif; ?>
-
-            <?php if(isset($_SESSION['success_message'])): ?>
-                <div style="background-color: #ccffcc; border: 2px solid #00cc00; padding: 12px; border-radius: 8px; color: #00cc00; margin: 15px 0;">
-                    <?php echo $_SESSION['success_message']; unset($_SESSION['success_message']); ?>
-                </div>
-            <?php endif; ?>
-
-            <div class="form-buttons">
-                <button type="submit" class="btn-create">Create</button>
-                <a href="login.php" class="btn-already">Déjà un compte ?</a>
-            </div>
-        </form>
-    </div>
->>>>>>> Stashed changes
 </div>
 
 <script>
@@ -123,22 +62,3 @@ function togglePassword() {
 <?php
 include $_SERVER['DOCUMENT_ROOT'] . '/footer.php';
 ?>
-=======
-    if (pseudo === '' || firstName === '' || lastName === '' || email === '' || password === '') {
-        alert('Tous les champs sont obligatoires.');
-        return false;
-    }
-    if (!email.includes('@')) {
-        alert('Veuillez entrer une adresse e-mail valide.');
-        return false;
-    }
-    if (password.length < 6) {
-        alert('Le mot de passe doit contenir au moins 6 caractères.');
-        return false;
-    }
-    return true;
-}
-</script>
-
-<?php require_once '../../../footer.php'; ?>
->>>>>>> Stashed changes
