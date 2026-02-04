@@ -28,9 +28,12 @@ if(isset($_GET['numMotCle'])){
             <!-- Form to create a new statut -->
             <form action="<?php echo ROOT_URL . '/api/keywords/delete.php' ?>" method="post">
                 <div class="form-group">
+                    <label for="numMotCle">Id du mot clé</label>
+                    <input id="numMotCle" name="numMotCle" class="form-control" type="text" value="<?php echo($numMotCle); ?>" readonly="readonly" />
+                </div>
+                <div class="form-group">
                     <label for="libMotCle">Nom du mot clé</label>
-                    <input id="numMotCle" name="numStat" class="form-control" style="display: none" type="text" value="<?php echo($numMotCle); ?>" readonly="readonly" />
-                    <input id="libMotCle" name="libMotCle" class="form-control" type="text" value="<?php echo($libMotCle); ?>" readonly="readonly" disabled />
+                    <input id="libMotCle" name="libMotCle" class="form-control" type="text" value="<?php echo($libMotCle); ?>" readonly="readonly" />
                 </div>
                 <br />
                 <div class="form-group mt-2">

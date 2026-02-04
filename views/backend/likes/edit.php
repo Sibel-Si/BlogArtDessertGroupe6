@@ -124,7 +124,7 @@ if (isset($_GET['numMemb']) && isset($_GET['numArt'])) {
             submit — відправляє форму
             після цього запрацює api/likes/update.php
           -->
-          <button type="submit" class="btn btn-moyen">
+          <button type="submit" class="btn btn-fonce">
             Confirmer Edit ?
           </button>
 

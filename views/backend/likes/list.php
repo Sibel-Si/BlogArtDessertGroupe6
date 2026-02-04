@@ -90,7 +90,7 @@ $likes = sql_select("likeart", "*", "1=1");
           style="color:<?php
             // Якщо likeA = 1 → рожевий
             // Якщо likeA = 0 → помаранчевий
-            echo $likeA ? 'deeppink' : 'orange';
+            echo $likeA ? 'green' : 'red';
           ?>"
         >
           <?php

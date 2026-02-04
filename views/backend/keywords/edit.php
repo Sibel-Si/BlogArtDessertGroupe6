@@ -24,7 +24,7 @@ if(isset($_GET['numMotCle'])){
                 <br />
                 <div class="form-group mt-2">
                     <a href="list.php" class="btn btn-moyen">List</a>
-                    <button type="submit" class="btn btn-moyen">Confirmer edit ?</button>
+                    <button type="submit" class="btn btn-clair">Confirmer edit ?</button>
                 </div>
             </form>
         </div>

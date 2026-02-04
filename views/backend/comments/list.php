@@ -52,7 +52,7 @@ $membres = sql_select("MEMBRE", "*");
                             <td><?php echo($commentaire['dtCreaCom']); ?></td>
                             <td><?php echo($commentaire['libCom']); ?></td>
                             <td>
-                                <a href="control.php?dtCreaCom=<?php echo($commentaire['dtCreaCom']); ?>" class="btn btn-moyen">Control</a>
+                                <a href="control.php?dtCreaCom=<?php echo($commentaire['dtCreaCom']); ?>" class="btn btn-clair">Control</a>
                                 <a href="edit.php?dtCreaCom=<?php echo($commentaire['dtCreaCom']); ?>" class="btn btn-moyen">Edit</a>
                             </td>
                         </tr>
@@ -80,7 +80,7 @@ $membres = sql_select("MEMBRE", "*");
                             <td><?php echo($commentaire['attModOK']); ?></td>
                             <td><?php echo($commentaire['notifComKOAff']); ?></td>
                             <td>
-                                <a href="edit.php?dtCreaCom=<?php echo($commentaire['dtCreaCom']); ?>" class="btn btn-moyen">Edit</a>
+                                <a href="edit.php?dtCreaCom=<?php echo($commentaire['dtCreaCom']); ?>" class="btn btn-clair">Edit</a>
                             </td>
                         </tr>
                     <?php } ?>
@@ -141,7 +141,7 @@ $membres = sql_select("MEMBRE", "*");
                 </tbody>
             </table>
             <!--à verifier pour clic bouton si membre connecté-->
-            <a href="create.php" class="btn btn-moyen">Create</a>
+            <a href="create.php" class="btn btn-clair">Create</a>
         </div>
     </div>
 </div>

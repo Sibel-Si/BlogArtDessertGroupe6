@@ -24,15 +24,14 @@ $thematiques = sql_select("THEMATIQUE", "*");
                             <td><?php echo($thematique['numThem']); ?></td>
                             <td><?php echo($thematique['libThem']); ?></td>
                             <td>
-                                <a href="edit.php?numThem=<?php echo($thematique['numThem']); ?>" class="btn btn-primary">Edit</a>
-<a href="delete.php?numThem=<?php echo($thematique['numThem']); ?>" class="btn btn-danger">Delete</a>
-                                
+                                <a href="edit.php?numThem=<?php echo($thematique['numThem']); ?>" class="btn btn-moyen">Edit</a>
+                                <a href="delete.php?numThem=<?php echo($thematique['numThem']); ?>" class="btn btn-fonce">Delete</a>  
                             </td>
                         </tr>
                     <?php } ?>
                 </tbody>
             </table>
-            <a href="create.php" class="btn btn-success">Create</a>
+            <a href="create.php" class="btn btn-clair">Create</a>
         </div>
     </div>
 </div>

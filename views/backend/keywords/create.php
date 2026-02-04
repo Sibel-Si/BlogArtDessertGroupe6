@@ -18,7 +18,7 @@ include '../../../header.php';
                 <br />
                 <div class="form-group mt-2">
                     <a href="list.php" class="btn btn-moyen">List</a>
-                    <button type="submit" class="btn btn-moyen">Confirmer create ?</button>
+                    <button type="submit" class="btn btn-clair">Confirmer create ?</button>
                 </div>
             </form>
         </div>

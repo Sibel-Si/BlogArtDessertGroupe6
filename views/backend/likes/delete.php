@@ -122,7 +122,7 @@ if (isset($_GET['numMemb']) && isset($_GET['numArt'])) {
             → відправить форму в api/likes/delete.php
             → там буде реальний DELETE
           -->
-          <button type="submit" class="btn btn-outline-fonce">
+          <button type="submit" class="btn btn-fonce">
             Confirmer Delete ?
           </button>
 

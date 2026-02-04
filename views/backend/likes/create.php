@@ -76,7 +76,7 @@ if ($selectedNumMemb > 0) {
         <div class="form-group mt-2">
           <a href="list.php" class="btn btn-moyen">List</a>
 
-          <button type="submit" class="btn btn-moyen" <?php echo ($selectedNumMemb > 0) ? "" : "disabled"; ?>>
+          <button type="submit" class="btn btn-clair" <?php echo ($selectedNumMemb > 0) ? "" : "disabled"; ?>>
             Create
           </button>
         </div>

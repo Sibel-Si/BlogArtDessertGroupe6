@@ -31,7 +31,7 @@ $motscles = sql_select("MOTCLE", "*");
                     <?php } ?>
                 </tbody>
             </table>
-            <a href="create.php" class="btn btn-moyen">Create</a>
+            <a href="create.php" class="btn btn-clair">Create</a>
         </div>
     </div>
 </div>
