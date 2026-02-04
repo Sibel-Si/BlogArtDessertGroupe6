@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 /* Palette de couleurs */
 :root {
     --bg-beige: #F2D8B3;        /* Fond de page */
@@ -216,3 +217,415 @@ body {
     }
 }
 
+=======
+/* Les Délices Bordelais - Palette exacte et styles complets */
+
+:root {
+    --bg-beige: #F2D8B3;        /* Fond de page */
+    --caramel: #C68642;          /* Top bar + titres */
+    --chocolat: #4B2414;         /* Texte & rayures sombres */
+    --sable: #E6C9A8;            /* Champs de saisie */
+    --creme-claire: #F9F1E7;     /* Rayures claires */
+    --gris-clair: #D3D3D3;
+}
+
+* { 
+    box-sizing: border-box; 
+    margin: 0; 
+    padding: 0; 
+}
+
+html, body { 
+    height: 100%; 
+    background: var(--bg-beige);
+}
+
+body {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    color: var(--chocolat);
+}
+
+/* ===== TOP BAR (STRATE 1) ===== */
+.top-bar {
+    background: var(--caramel);
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.top-bar-inner {
+    width: 100%;
+    max-width: 1400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 0 16px;
+}
+
+.top-bar .text { 
+    color: #000; 
+    font-family: Arial, Helvetica, sans-serif; 
+    font-size: 0.9rem; 
+}
+
+.top-bar .icons { 
+    position: absolute; 
+    right: 16px; 
+    display: flex;
+    gap: 8px;
+}
+
+.top-bar .icons a { 
+    color: #000; 
+    text-decoration: none; 
+    font-size: 1.1rem; 
+    cursor: pointer;
+}
+
+/* ===== LOGO SECTION (STRATE 2) ===== */
+.logo-section {
+    background: var(--bg-beige);
+    padding: 28px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo-left h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    color: var(--chocolat);
+    font-size: 2.6rem;
+    line-height: 1.05;
+    margin: 0;
+    font-weight: 400;
+}
+
+.logo-left .bordelais {
+    display: inline;
+}
+
+.logo-left .cannele { 
+    margin-left: 10px; 
+    font-size: 1.6rem; 
+    vertical-align: middle; 
+}
+
+.logo-right { 
+    display: flex; 
+    gap: 12px; 
+    align-items: center; 
+}
+
+.logo-right .btn-pill {
+    background: var(--chocolat);
+    color: #fff;
+    padding: 10px 26px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.logo-right .btn-pill:hover { 
+    background: var(--caramel); 
+    color: var(--chocolat); 
+    transform: translateY(-2px);
+}
+
+/* ===== STRIPED BAR (STRATE 3) ===== */
+.striped-bar {
+    height: 30px;
+    background: repeating-linear-gradient(90deg,
+        var(--chocolat) 0 20px,
+        var(--creme-claire) 20px 40px);
+}
+
+/* ===== MAIN CARAMEL BAND ===== */
+.main-caramel-band {
+    background: var(--caramel);
+    text-align: center;
+    padding: 36px 12px;
+}
+
+.main-caramel-band h2 { 
+    margin: 0; 
+    color: #000; 
+    font-size: 1.6rem; 
+    letter-spacing: 2px; 
+    text-transform: uppercase;
+    font-weight: 400;
+}
+
+/* ===== FORM CONTAINER & CARD ===== */
+.form-container { 
+    max-width: 520px; 
+    margin: 48px auto; 
+    padding: 32px; 
+    background: transparent; 
+    position: relative; 
+}
+
+.form-card {
+    background: var(--bg-beige);
+    padding: 28px; 
+    border-radius: 12px; 
+    box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+}
+
+.form-card h3 { 
+    font-family: 'Playfair Display', Georgia, serif; 
+    color: var(--chocolat); 
+    margin-bottom: 16px;
+    font-size: 1.8rem;
+    font-weight: 400;
+}
+
+.form-group { 
+    margin-bottom: 16px; 
+}
+
+.form-group label { 
+    display: block; 
+    margin-bottom: 6px; 
+    color: var(--chocolat); 
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+.form-group input { 
+    width: 100%; 
+    padding: 12px 14px; 
+    border-radius: 10px; 
+    border: 1px solid rgba(0,0,0,0.08); 
+    background: var(--sable);
+    color: var(--chocolat);
+    font-family: Georgia, serif;
+    font-size: 0.95rem;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--caramel);
+    background: var(--sable);
+}
+
+.captcha-box { 
+    background: var(--sable); 
+    padding: 12px; 
+    border-radius: 8px; 
+    margin: 14px 0; 
+    text-align: center;
+    color: var(--chocolat);
+    font-size: 0.9rem;
+}
+
+.form-buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.btn-create { 
+    background: var(--caramel); 
+    color: #000; 
+    padding: 10px 22px; 
+    border-radius: 40px; 
+    border: none;
+    cursor: pointer;
+    font-family: Arial, sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.btn-create:hover {
+    background: var(--chocolat);
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+.btn-already { 
+    background: var(--creme-claire); 
+    color: var(--chocolat); 
+    padding: 10px 18px; 
+    border-radius: 10px; 
+    text-decoration: none; 
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-family: Arial, sans-serif;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.btn-already:hover {
+    background: var(--chocolat);
+    color: #fff;
+    text-decoration: none;
+}
+
+/* ===== HOMEPAGE IMAGES ===== */
+.homepage-content {
+    padding: 60px 40px;
+    background: var(--bg-beige);
+}
+
+.homepage-images {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: start;
+}
+
+.image-box {
+    position: relative;
+    overflow: hidden;
+    border: 8px solid var(--chocolat);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    background: white;
+    aspect-ratio: 1;
+}
+
+.image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.image-box:hover img {
+    transform: scale(1.05);
+}
+
+.image-cannele {
+    transform: rotate(-3deg);
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.image-fondant {
+    transform: rotate(2deg);
+    grid-column: 2;
+    grid-row: 2;
+    margin-top: 80px;
+}
+
+.image-caption {
+    background: var(--chocolat);
+    color: white;
+    padding: 15px;
+    text-align: center;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* ===== HOMEPAGE DECORATION ===== */
+.homepage-decoration {
+    text-align: center;
+    padding: 40px 20px;
+    font-size: 3em;
+    opacity: 0.3;
+    letter-spacing: 20px;
+    background: var(--bg-beige);
+}
+
+/* ===== LINE ART DECORATIONS ===== */
+.line-art-decoration {
+    color: var(--chocolat);
+    position: absolute;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .logo-section {
+        flex-direction: column;
+        gap: 16px;
+        text-align: center;
+    }
+
+    .logo-left h1 {
+        font-size: 1.8rem;
+    }
+
+    .logo-right {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .homepage-images {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .image-fondant {
+        margin-top: 0;
+        grid-column: 1;
+        grid-row: 2;
+    }
+
+    .image-box {
+        height: 300px;
+        aspect-ratio: auto;
+    }
+
+    .form-card {
+        padding: 20px;
+    }
+
+    .form-buttons {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo-left h1 {
+        font-size: 1.5rem;
+    }
+
+    .logo-left .cannele {
+        display: block;
+        margin-left: 0;
+        margin-top: 8px;
+    }
+
+    .striped-bar {
+        height: 20px;
+    }
+
+    .main-caramel-band h2 {
+        font-size: 1.3rem;
+    }
+
+    .homepage-images {
+        gap: 12px;
+    }
+
+    .image-box {
+        height: 200px;
+    }
+
+    .homepage-decoration {
+        font-size: 1.8em;
+        letter-spacing: 10px;
+    }
+}
+
+/* ===== UTILITIES ===== */
+.text-center { 
+    text-align: center; 
+}
+
+>>>>>>> Stashed changes
