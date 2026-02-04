@@ -33,7 +33,7 @@ unset($_SESSION['login_error']);
             </label>
         </div>
 
-        <!-- CAPTCHA (visuel seulement si вже є) -->
+        <!-- CAPTCHA (visuel seulement ) -->
         <div class="mt-3">
             <button type="button" class="btn btn-light w-100" disabled>
                 Captcha
