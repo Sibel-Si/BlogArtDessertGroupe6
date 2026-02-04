@@ -8,31 +8,8 @@
 <!-- Custom CSS -->
 <link rel="stylesheet" href="<?php echo ROOT_URL . '/src/css/style.css' ?>" />
 
-<!-- <footer>
-	footer
-	<p>BlogArt'26</p>
-	<ul>
-		<li>Sterenn Piga-Chavigny</li>
-		<li>Viktoriia Rudenko</li>
-		<li>Yassmine Rgana El Hami</li>
-		<li>Maïlyse Wilson</li>
-		<li>Sever Sibel</li>
-	</ul>
-	<div>
-		<p>Plan du Site :</p>
-		<p>Evenement</p>
-		<p>Acteur</p>
-		<p>Insolite</p>
-	</div>
-	<div>
-		<p>Mentions légales</p>
-		<p><a href="/views/frontend/rgpd/rgpd.php">RGPD</a></p>
-		<p><a href="/views/frontend/rgpd/cgu.php">CGU</a></p>
-	</div>
-</footer> -->
 
-
-<footer class="row row-cols-5 py-5 my-5 border-top navbar">
+<footer class="row row-cols-5 py-5 my-5 border-top navbar footer-custom">
 	<div class="col">
 	<a href="/" class="d-flex align-items-center mb-3 link-dark text-decoration-none">
 		<svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
