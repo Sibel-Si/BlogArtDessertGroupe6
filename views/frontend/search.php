@@ -13,15 +13,15 @@ require_once '../../header.php';
 //SELECT * FROM article WHERE libTitrArt LIKE '%n%';
 
 //on reprend avec un $_post les éléments placés dans la barre de recherche
-$motcle = $_POST("recherche");
+$motcle= $_POST["recherche"];
 
 //si motcle existe, on la place dans une variable
 if(isset($motcle)){
-    $rechercheTitr = $motcle("recherche");
+    $rechercheTitr = $motcle["recherche"];
 }
 
-//on fait une recherche dans la BDD avec les 
-$recherFinal = sql_select("ARTICLE", "*", "libTitrArt LIKE %".$rechercheTitr."%");
+//on fait une recherche dans la BDD avec les requetes souhaitees
+$recherFinal = sql_select("ARTICLE", "*", "libTitrArt LIKE '%$rechercheTitr%'");
 
 ?>
 <?php echo($recherFinal); ?>
