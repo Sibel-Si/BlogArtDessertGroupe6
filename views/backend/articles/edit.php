@@ -94,7 +94,7 @@ foreach($motsclesarticles as $mca) {
                 <br />
                 <div class="form-group">
                     <label for="urlPhotArt">Importez l'illustration</label>
-                    <input id="urlPhotArt" name="urlPhotArt" class="" type="file" accept=".jpg, .gif, .png, .jpeg" />
+                    <input id="urlPhotArt" name="urlPhotArt" class="btn btn-fonce" type="file" accept=".jpg, .gif, .png, .jpeg" />
                     <p>>> Extension des images acceptées : .jpg, .gif, .png, .jpeg<br />
                     (largeur, hauteur, taille max : 80000px, 80000px, 200 000 Go)</p>
                 </div>
@@ -128,8 +128,8 @@ foreach($motsclesarticles as $mca) {
                             </select>
                         </div>
                         <div class="d-flex flex-column justify-content-center">
-                            <button id="addBtn" type="button" class="btn btn-secondary mb-2">Ajouter &gt;</button>
-                            <button id="removeBtn" type="button" class="btn btn-secondary">&lt; Supprimer</button>
+                            <button id="addBtn" type="button" class="btn btn-fonce mb-2">Ajouter &gt;</button>
+                            <button id="removeBtn" type="button" class="btn btn-fonce">&lt; Supprimer</button>
                         </div>
                         <div class="flex-fill ms-2">
                             <select id="numMotCle[]" name="numMotCle[]" class="form-control" required="required" size=<?php echo(count($motscles)+1); ?> multiple="multiple">
@@ -147,8 +147,8 @@ foreach($motsclesarticles as $mca) {
                 </div>
                 <br />
                 <div class="form-group mt-2">
-                    <a href="list.php" class="btn btn-primary">List</a>
-                    <button type="submit" class="btn btn-success">Confirmer modification</button>
+                    <a href="list.php" class="btn btn-moyen">List</a>
+                    <button type="submit" class="btn btn-clair">Confirmer modification</button>
                 </div>
             </form>
         </div>
