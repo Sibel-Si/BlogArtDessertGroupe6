@@ -94,7 +94,7 @@ foreach($motsclesarticles as $mca) {
                 <br />
                 <div class="form-group">
                     <label for="urlPhotArt">Importez l'illustration</label>
-                    <input id="urlPhotArt" name="urlPhotArt" class="" type="file" accept=".jpg, .gif, .png, .jpeg" disabled />
+                    <input id="urlPhotArt" name="urlPhotArt" class="btn btn-fonce" type="file" accept=".jpg, .gif, .png, .jpeg" disabled />
                     <p>>> Extension des images acceptées : .jpg, .gif, .png, .jpeg<br />
                     (largeur, hauteur, taille max : 80000px, 80000px, 200 000 Go)</p>
                 </div>
@@ -131,10 +131,14 @@ foreach($motsclesarticles as $mca) {
                 </div>
                 <br />
                 <div class="form-group mt-2">
-                    <a href="list.php" class="btn btn-primary">List</a>
-                    <button type="submit" class="btn btn-success">Confirmer Suppression</button>
+                    <a href="list.php" class="btn btn-moyen">List</a>
+                    <button type="submit" class="btn btn-clair">Confirmer Suppression</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
+
+<?php
+include '../../../footer.php'; // contains the footer
+?>
