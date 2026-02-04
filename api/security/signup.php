@@ -1,10 +1,8 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'] . '/config/pdo.php'; // connexion PDO
+require_once $_SERVER['DOCUMENT_ROOT'] . '/config/pdo.php';
 
-// Vérifier que le formulaire est soumis
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    // Récupération des champs
     $pseudo     = trim($_POST['pseudoMemb']);
     $prenom     = trim($_POST['prenomMemb']);
     $nom        = trim($_POST['nomMemb']);
@@ -12,9 +10,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email2     = trim($_POST['emailMembConfirm']);
     $pass       = $_POST['passMemb'];
     $pass2      = $_POST['passMembConfirm'];
-    $consent    = $_POST['consent'] ?? null;
+    $accord     = $_POST['accordMemb'] ?? null;
 
-    // Vérifications
     $errors = [];
 
     if ($email !== $email2) {
@@ -25,27 +22,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $errors[] = "Les mots de passe ne correspondent pas.";
     }
 
-    if ($consent !== "oui") {
+    if ($accord !== "1") {
         $errors[] = "Vous devez accepter la conservation des données.";
     }
 
     if (!empty($errors)) {
-        // Affichage simple (à remplacer par un système de flash messages si tu veux)
         foreach ($errors as $e) {
             echo "<p style='color:red;'>$e</p>";
         }
         exit;
     }
 
-    // Hash du mot de passe
     $passHash = password_hash($pass, PASSWORD_DEFAULT);
 
-    // Insertion en base
+    // 🔥 Récupération du statut "Membre"
+    $stmt = $pdo->prepare("SELECT numStat FROM statut WHERE libStat = 'Membre'");
+    $stmt->execute();
+    $numStat = $stmt->fetchColumn();
+
     try {
         $sql = "INSERT INTO membre 
-                (pseudoMemb, prenomMemb, nomMemb, emailMemb, passMemb, consentMemb, dtCreaMemb)
+                (pseudoMemb, prenomMemb, nomMemb, eMailMemb, passMemb, accordMemb, dtCreaMemb, numStat)
                 VALUES 
-                (:pseudo, :prenom, :nom, :email, :pass, :consent, NOW())";
+                (:pseudo, :prenom, :nom, :email, :pass, :accord, NOW(), :numStat)";
 
         $stmt = $pdo->prepare($sql);
 
@@ -55,15 +54,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             ':nom'      => $nom,
             ':email'    => $email,
             ':pass'     => $passHash,
-            ':consent'  => ($consent === "oui") ? 1 : 0
+            ':accord'   => ($accord === "1") ? 1 : 0,
+            ':numStat'  => $numStat
         ]);
 
-        // Redirection après succès
         header("Location: /views/backend/security/login.php?signup=success");
         exit;
 
     } catch (PDOException $e) {
-        // Gestion des erreurs (ex : pseudo ou email déjà pris)
         echo "<p style='color:red;'>Erreur : " . $e->getMessage() . "</p>";
         exit;
     }
