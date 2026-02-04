@@ -96,8 +96,8 @@ $statuts = function_exists('sql_select') ? sql_select('STATUT', '*', null, null,
 			</div>
 
 			<div class="d-flex gap-3 mt-4">
-				<a href="list.php" class="btn btn-outline-primary">List</a>
-				<button type="submit" class="btn btn-outline-success">Create</button>
+				<a href="list.php" class="btn btn-moyen">List</a>
+				<button type="submit" class="btn btn-clair">Create</button>
 				</div>
 			</form>
 		</div>

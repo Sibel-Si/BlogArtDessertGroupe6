@@ -50,11 +50,11 @@ if(isset($_GET['numThem'])){
                 </div>
                 <br />
                 <div class="form-group mt-2">
-                    <a href="list.php" class="btn btn-primary">Retour à la liste</a>
+                    <a href="list.php" class="btn btn-moyen">Retour à la liste</a>
                     <?php if($articleCount === 0): ?>
-                        <button type="submit" class="btn btn-danger" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette thématique ?');">Confirmer suppression</button>
+                        <button type="submit" class="btn btn-fonce" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette thématique ?');">Confirmer suppression</button>
                     <?php else: ?>
-                        <button type="submit" class="btn btn-danger" disabled>Suppression impossible</button>
+                        <button type="submit" class="btn btn-fonce" disabled>Suppression impossible</button>
                     <?php endif; ?>
                 </div>
             </form>

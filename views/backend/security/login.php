@@ -34,7 +34,7 @@ include '../../../header.php';
 
         <!-- SUBMIT -->
         <div class="mt-4">
-            <button type="submit" class="btn btn-success w-100">
+            <button type="submit" class="btn btn-clair w-100">
                 Se connecter
             </button>
         </div>

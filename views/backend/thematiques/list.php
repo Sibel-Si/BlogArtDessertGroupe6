@@ -32,8 +32,8 @@ include '../../../header.php';
                 </div>
                 <br />
                 <div class="form-group mt-2">
-                    <a href="list.php" class="btn btn-primary">List</a>
-                    <button type="submit" class="btn btn-success">Confirmer create ?</button>
+                    <a href="list.php" class="btn btn-moyen">List</a>
+                    <button type="submit" class="btn btn-clair">Confirmer create ?</button>
                 </div>
             </form>
         </div>

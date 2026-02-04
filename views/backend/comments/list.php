@@ -52,8 +52,8 @@ $membres = sql_select("MEMBRE", "*");
                             <td><?php echo($commentaire['dtCreaCom']); ?></td>
                             <td><?php echo($commentaire['libCom']); ?></td>
                             <td>
-                                <a href="control.php?dtCreaCom=<?php echo($commentaire['dtCreaCom']); ?>" class="btn btn-primary">Control</a>
-                                <a href="edit.php?dtCreaCom=<?php echo($commentaire['dtCreaCom']); ?>" class="btn btn-warning">Edit</a>
+                                <a href="control.php?dtCreaCom=<?php echo($commentaire['dtCreaCom']); ?>" class="btn btn-moyen">Control</a>
+                                <a href="edit.php?dtCreaCom=<?php echo($commentaire['dtCreaCom']); ?>" class="btn btn-moyen">Edit</a>
                             </td>
                         </tr>
                     <?php } ?>
@@ -80,7 +80,7 @@ $membres = sql_select("MEMBRE", "*");
                             <td><?php echo($commentaire['attModOK']); ?></td>
                             <td><?php echo($commentaire['notifComKOAff']); ?></td>
                             <td>
-                                <a href="edit.php?dtCreaCom=<?php echo($commentaire['dtCreaCom']); ?>" class="btn btn-warning">Edit</a>
+                                <a href="edit.php?dtCreaCom=<?php echo($commentaire['dtCreaCom']); ?>" class="btn btn-moyen">Edit</a>
                             </td>
                         </tr>
                     <?php } ?>
@@ -107,7 +107,7 @@ $membres = sql_select("MEMBRE", "*");
                             <td><?php echo($commentaire['delLogiq']); ?></td>
                             <td><?php echo($commentaire['notifComKOAff']); ?></td>
                             <td>
-                                <a href="edit.php?dtCreaCom=<?php echo($commentaire['dtCreaCom']); ?>" class="btn btn-warning">Edit</a>
+                                <a href="edit.php?dtCreaCom=<?php echo($commentaire['dtCreaCom']); ?>" class="btn btn-moyen">Edit</a>
                             </td>
                         </tr>
                     <?php } ?>
@@ -134,14 +134,14 @@ $membres = sql_select("MEMBRE", "*");
                             <td><?php echo($commentaire['delLogiq']); ?></td>
                             <td><?php echo($commentaire['notifComKOAff']); ?></td>
                             <td>
-                                <a href="delete.php?dtCreaCom=<?php echo($commentaire['dtCreaCom']); ?>" class="btn btn-danger">Delete</a>
+                                <a href="delete.php?dtCreaCom=<?php echo($commentaire['dtCreaCom']); ?>" class="btn btn-fonce">Delete</a>
                             </td>
                         </tr>
                     <?php } ?>
                 </tbody>
             </table>
             <!--à verifier pour clic bouton si membre connecté-->
-            <a href="create.php" class="btn btn-success">Create</a>
+            <a href="create.php" class="btn btn-moyen">Create</a>
         </div>
     </div>
 </div>

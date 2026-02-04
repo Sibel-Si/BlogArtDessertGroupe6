@@ -118,13 +118,13 @@ if (isset($_GET['numMemb']) && isset($_GET['numArt'])) {
         <div class="form-group mt-2">
 
           <!-- Повернутись на список -->
-          <a href="list.php" class="btn btn-primary">List</a>
+          <a href="list.php" class="btn btn-moyen">List</a>
 
           <!--
             submit — відправляє форму
             після цього запрацює api/likes/update.php
           -->
-          <button type="submit" class="btn btn-warning">
+          <button type="submit" class="btn btn-moyen">
             Confirmer Edit ?
           </button>
 

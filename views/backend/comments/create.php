@@ -54,12 +54,12 @@ $commentaires = sql_select("COMMENT", "*");
                     <textarea id="libStat" name="libStat" class="form-control">Entrez le commentaire</textarea>
                 </div>
                 <div class="form-group mt-2">
-                    <button type="submit" class="btn btn-primary">Poster</button>
+                    <button type="submit" class="btn btn-moyen">Poster</button>
                 </div>
             </form>
             <h3> Commentaires de l'article :<?php echo("")?></h3>
             
-            <a href="list.php" class="btn btn-primary">List</a>
+            <a href="list.php" class="btn btn-moyen">List</a>
         </div>
     </div>
 </div>
