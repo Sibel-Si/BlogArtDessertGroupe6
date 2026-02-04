@@ -9,7 +9,7 @@ $libCom = sql_select("COMMENT","libCom");
 
 if(isset($_GET["numCom"])){
     $numComment = $_GET["numCom"];
-    $affichageNumCom = sql_select("COMMENT", "numCom", "numCom = $numComment");
+    $affichageNumCom = sql_select("COMMENT", "numCom", "dtCreaCom = $numComment");
 }
 
 //au clic bouton edit, affichage des données sur les parties correspondantes
