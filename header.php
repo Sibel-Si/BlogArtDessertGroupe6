@@ -53,5 +53,3 @@ require_once 'config.php';
 </nav>
 
 <?php include_once __DIR__ . '/src/cookie_banner.php'; ?>
-
-
