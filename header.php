@@ -6,6 +6,7 @@ require_once 'config.php';
 <html lang="fr">
 <head>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Blog'Art</title>
@@ -54,6 +55,49 @@ require_once 'config.php';
 </nav>
 
 <?php include_once __DIR__ . '/src/cookie_banner.php'; ?>
+=======
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les Délices Bordelais - Blog</title>
+    
+    <!-- Google Fonts Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Google Fonts Import -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="<?php echo (defined('ROOT_URL') ? ROOT_URL : '') . '/src/css/style.css'; ?>">
+</head>
+<body>
+    <!-- TOP BAR (Strate 1) -->
+    <div class="top-bar">
+        <div class="top-bar-inner">
+            <span class="text">welcome to the blog made buy blogartstudio</span>
+            <div class="icons">
+                <a href="<?php echo (defined('ROOT_URL') ? ROOT_URL : '') . '/index.php'; ?>" title="Accueil">🏠</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- LOGO SECTION (Strate 2) -->
+    <div class="logo-section">
+        <div class="logo-left">
+            <h1>Les Délices <span class="bordelais">Bordelais</span> <span class="cannele">🥐</span></h1>
+        </div>
+        <div class="logo-right">
+            <a href="<?php echo (defined('ROOT_URL') ? ROOT_URL : '') . '/views/backend/security/login.php'; ?>" class="btn-pill">ADMIN</a>
+            <a href="<?php echo (defined('ROOT_URL') ? ROOT_URL : '') . '/views/frontend/search.php'; ?>" class="btn-pill">RECHERCHE</a>
+        </div>
+    </div>
+
+    <!-- STRIPED BAR (Strate 3) -->
+    <div class="striped-bar"></div>
+>>>>>>> Stashed changes
 =======
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

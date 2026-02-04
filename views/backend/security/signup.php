@@ -1,8 +1,11 @@
 <?php
 include '../../../header.php';
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 ?>
 =======
+=======
+>>>>>>> Stashed changes
 ?>
 
 <!-- CARAMEL MAIN BAND WITH "NOM DU BLOG" -->
@@ -108,4 +111,7 @@ function validateSignupForm() {
 </script>
 
 <?php require_once '../../../footer.php'; ?>
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
