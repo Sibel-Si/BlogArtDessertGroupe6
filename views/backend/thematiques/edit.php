@@ -45,8 +45,8 @@ if(isset($_GET['numThem'])){
                 </div>
                 <br />
                 <div class="form-group mt-2">
-                    <a href="list.php" class="btn btn-primary">List</a>
-                    <button type="submit" class="btn btn-warning">Confirmer modification ?</button>
+                    <a href="list.php" class="btn btn-moyen">List</a>
+                    <button type="submit" class="btn btn-moyen">Confirmer modification ?</button>
                 </div>
             </form>
         </div>

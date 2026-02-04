@@ -36,8 +36,8 @@ if(isset($_GET['numStat'])){
                 </div>
                 <br />
                 <div class="form-group mt-2">
-                    <a href="list.php" class="btn btn-primary">List</a>
-                    <button type="submit" class="btn btn-danger">Confirmer delete ?</button>
+                    <a href="list.php" class="btn btn-moyen">List</a>
+                    <button type="submit" class="btn btn-fonce">Confirmer delete ?</button>
                 </div>
             </form>
         </div>

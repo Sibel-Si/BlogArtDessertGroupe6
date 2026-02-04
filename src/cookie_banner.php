@@ -21,11 +21,11 @@
       </div>
 
       <div class="modal-footer">
-        <button type="button" class="btn btn-outline-primary" onclick="refuseCookies()">
+        <button type="button" class="btn btn-outline-moyen" onclick="refuseCookies()">
           Refuser
         </button>
 
-        <button type="button" class="btn btn-primary" onclick="acceptCookies()">
+        <button type="button" class="btn btn-moyen" onclick="acceptCookies()">
           Accepter
         </button>
       </div>

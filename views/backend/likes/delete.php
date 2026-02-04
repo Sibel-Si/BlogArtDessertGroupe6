@@ -115,14 +115,14 @@ if (isset($_GET['numMemb']) && isset($_GET['numArt'])) {
         <div class="form-group mt-2">
 
           <!-- Повернутись до списку -->
-          <a href="list.php" class="btn btn-primary">List</a>
+          <a href="list.php" class="btn btn-moyen">List</a>
 
           <!--
             submit = підтвердити
             → відправить форму в api/likes/delete.php
             → там буде реальний DELETE
           -->
-          <button type="submit" class="btn btn-outline-danger">
+          <button type="submit" class="btn btn-outline-fonce">
             Confirmer Delete ?
           </button>
 

@@ -9,7 +9,7 @@ if(isset($_SESSION['success_message'])):
     unset($_SESSION['success_message']);
 endif;
 if(isset($_SESSION['error_message'])):
-    echo '<div class="container mt-3"><div class="alert alert-danger alert-dismissible fade show" role="alert">'.$_SESSION['error_message'].'<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div></div>';
+    echo '<div class="container mt-3"><div class="alert alert-fonce alert-dismissible fade show" role="alert">'.$_SESSION['error_message'].'<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div></div>';
     unset($_SESSION['error_message']);
 endif;
 
@@ -94,8 +94,8 @@ $dtCreation = isset($member['dtCreaMemb']) ? date('d/m/Y H:i:s', strtotime($memb
                 </div>
 
                 <div class="form-group text-right">
-                    <a href="list.php" class="btn btn-outline-primary btn-sm text-secondary mr-2">List</a>
-                    <button type="submit" class="btn btn-outline-danger btn-sm text-dark">Confirmer Delete ?</button>
+                    <a href="list.php" class="btn btn-moyen">List</a>
+                    <button type="submit" class="btn btn-fonce ">Confirmer Delete ?</button>
                 </div>
 
             </form>

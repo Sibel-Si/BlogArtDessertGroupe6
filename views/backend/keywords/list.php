@@ -24,14 +24,14 @@ $motscles = sql_select("MOTCLE", "*");
                             <td><?php echo($motcle['numMotCle']); ?></td>
                             <td><?php echo($motcle['libMotCle']); ?></td>
                             <td>
-                                <a href="edit.php?numMotCle=<?php echo($motcle['numMotCle']); ?>" class="btn btn-primary">Edit</a>
-                                <a href="delete.php?numMotCle=<?php echo($motcle['numMotCle']); ?>" class="btn btn-danger">Delete</a>
+                                <a href="edit.php?numMotCle=<?php echo($motcle['numMotCle']); ?>" class="btn btn-moyen">Edit</a>
+                                <a href="delete.php?numMotCle=<?php echo($motcle['numMotCle']); ?>" class="btn btn-fonce">Delete</a>
                             </td>
                         </tr>
                     <?php } ?>
                 </tbody>
             </table>
-            <a href="create.php" class="btn btn-success">Create</a>
+            <a href="create.php" class="btn btn-moyen">Create</a>
         </div>
     </div>
 </div>

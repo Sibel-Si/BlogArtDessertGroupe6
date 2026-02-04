@@ -53,14 +53,14 @@ $motsclesarticles = sql_select("MOTCLEARTICLE", "*");
                                 $indThem = $article['numThem'] - 1;
                                 echo($themes[$indThem]['libThem']); ?></td> 
                             <td>
-                                <a href="edit.php?numArt=<?php echo($article['numArt']); ?>" class="btn btn-primary">Edit</a>
-                                <a href="delete.php?numArt=<?php echo($article['numArt']); ?>" class="btn btn-danger">Delete</a>
+                                <a href="edit.php?numArt=<?php echo($article['numArt']); ?>" class="btn btn-moyen">Edit</a>
+                                <a href="delete.php?numArt=<?php echo($article['numArt']); ?>" class="btn btn-fonce">Delete</a>
                             </td>
                         </tr>
                     <?php } ?>
                 </tbody>
             </table>
-            <a href="create.php" class="btn btn-success">Create</a>
+            <a href="create.php" class="btn btn-clair">Create</a>
         </div>
     </div>
 </div>

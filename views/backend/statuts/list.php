@@ -24,14 +24,14 @@ $statuts = sql_select("STATUT", "*");
                             <td><?php echo($statut['numStat']); ?></td>
                             <td><?php echo($statut['libStat']); ?></td>
                             <td>
-                                <a href="edit.php?numStat=<?php echo($statut['numStat']); ?>" class="btn btn-primary">Edit</a>
-                                <a href="delete.php?numStat=<?php echo($statut['numStat']); ?>" class="btn btn-danger">Delete</a>
+                                <a href="edit.php?numStat=<?php echo($statut['numStat']); ?>" class="btn btn-moyen">Edit</a>
+                                <a href="delete.php?numStat=<?php echo($statut['numStat']); ?>" class="btn btn-fonce">Delete</a>
                             </td>
                         </tr>
                     <?php } ?>
                 </tbody>
             </table>
-            <a href="create.php" class="btn btn-success">Create</a>
+            <a href="create.php" class="btn btn-clair">Create</a>
         </div>
     </div>
 </div>

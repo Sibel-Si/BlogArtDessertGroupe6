@@ -60,8 +60,8 @@ include '../../../header.php'; // contains the header and call to config.php
               <td><?php echo $accord; ?></td>
               <td><?php echo htmlspecialchars($statLib); ?></td>
               <td class="text-right">
-                <a href="edit.php?numM=<?php echo $m['numMemb']; ?>" class="btn btn-sm btn-warning mr-1">Edit</a>
-                <a href="delete.php?numM=<?php echo $m['numMemb']; ?>" class="btn btn-sm btn-danger">Delete</a>
+                <a href="edit.php?numM=<?php echo $m['numMemb']; ?>" class="btn btn-sm btn-moyen mr-1">Edit</a>
+                <a href="delete.php?numM=<?php echo $m['numMemb']; ?>" class="btn btn-sm btn-fonce">Delete</a>
               </td>
             </tr>
             <?php 
@@ -79,7 +79,7 @@ include '../../../header.php'; // contains the header and call to config.php
 
       <div class="d-flex justify-content-between align-items-center mt-3">
         <div class="d-flex align-items-center">
-          <a href="create.php" class="btn btn-primary btn-sm mr-3">Create</a>
+          <a href="create.php" class="btn btn-clair btn-sm mr-3">Create</a>
           <nav aria-label="Page navigation">
 
     

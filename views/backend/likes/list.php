@@ -112,7 +112,7 @@ $likes = sql_select("likeart", "*", "1=1");
 
           <a 
             href="edit.php?numMemb=<?php echo $numMemb; ?>&numArt=<?php echo $numArt; ?>"
-            class="btn btn-warning btn-sm"
+            class="btn btn-moyen btn-sm"
           > 
           <!-- Тут текст посилання — Edit -->
             Edit 
@@ -123,7 +123,7 @@ $likes = sql_select("likeart", "*", "1=1");
           <!-- Так само передаємо numMemb і numArt -->
           <a
             href="delete.php?numMemb=<?php echo $numMemb; ?>&numArt=<?php echo $numArt; ?>"
-            class="btn btn-danger btn-sm"
+            class="btn btn-fonce btn-sm"
           >
             Delete
           </a>
@@ -140,6 +140,6 @@ $likes = sql_select("likeart", "*", "1=1");
   </table>
 
   <!-- Кнопка для створення нового лайка -->
-  <a href="create.php" class="btn btn-success">Create</a>
+  <a href="create.php" class="btn btn-clair">Create</a>
 
 </div>
