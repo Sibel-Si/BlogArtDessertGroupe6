@@ -95,6 +95,7 @@ body {
 .box-info {
     color: rgb(0, 0, 0);
     background-color: #E7A564;
+    background-color: var(--caramel);
     font-size: 30px;
     padding-left: 3rem ;
     word-wrap: break-word"
