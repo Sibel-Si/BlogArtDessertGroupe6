@@ -19,7 +19,7 @@ if(isset($_GET["dtCreaCom"])){
 }
 if(isset($_GET["dtCreaCom"])){
     $numArt = $_GET["dtCreaCom"];
-    $affichageNumArt = sql_select("ARTICLE", "numArt", "numArt = \"$numArt\"");
+    $affichageNumArt = sql_select("ARTICLE COMMENT", "numArt", "numArt = \"$numArt\"");
     var_dump($affichageNumArt);
 }
 
