@@ -15,7 +15,7 @@ require_once __DIR__ . '/../../functions/ctrlSaisies.php';
 
 $pseudo = ctrlSaisies($_POST['pseudoMemb']);
 $pass   = ctrlSaisies($_POST['passMemb']);
-$captchaRes = $_POST['g-recaptcha-response'];
+//$captchaRes = $_POST['g-recaptcha-response'];
 
 if ($pseudo === '' || $pass === '') {
     $_SESSION['login_error'] = "Champs obligatoires manquants.";
@@ -62,23 +62,22 @@ $membre = sql_select(
     "pseudoMemb = '$pseudo'"
 );
 
+// Check if user exists
 if (!$membre || count($membre) !== 1) {
     $_SESSION['login_error'] = "Pseudo ou mot de passe incorrect.";
     header('Location: /views/backend/security/login.php');
     exit;
 }
 
-if ($pass !== $membre[0]['passMemb']) {
+// CHECK HASH HERE
+if (!password_verify($pass, $membre[0]['passMemb'])) {
     $_SESSION['login_error'] = "Pseudo ou mot de passe incorrect.";
     header('Location: /views/backend/security/login.php');
     exit;
 }
 
-$_SESSION['id_user '] = $membre[0]['numMemb'];
-// 7. Connexion réussie → session
+// 7. Success → Create session
 $_SESSION['id_user'] = $membre[0]['numMemb'];
-$_SESSION['pseudoMemb'] = $membre[0]['pseudoMemb'];
-$_SESSION['numStat'] = (int)$membre[0]['numStat'];
 
 header('Location: /');
 exit;

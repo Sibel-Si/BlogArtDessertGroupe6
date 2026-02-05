@@ -18,6 +18,14 @@
 - **views** - All your pages
 - 
 
-Les logins/passwords (côté back et côté front) nous sont fournis, en clair, pour l'accès et le test du projet. (dans le readme_Gpe1.md),
+Login Administrateur:
 
-Le repo doit contenir le(s) readme_Gpe1.md du groupe 1 (allez voir le modèle "readme.md" à la racine du dossier) de l'état des lieux du projet (liste non exhaustive)
+    Pseudo: Admin00
+    MDP: Admin0000
+
+Login Membre: 
+
+    Pseudo: Membre
+    MDP: Membre0000
+
+Etat des lieux projet (a remplir vendredi soir)
