@@ -6,7 +6,7 @@ require_once '../../functions/ctrlSaisies.php';
 
 $dtCreaCom = ($_GET['dtCreaCom']);
 
-sql_update('COMMENT', 'dtCreaCom', "'$dtCreaCom'");
+sql_update('COMMENT', 'numCom', "'$dtCreaCom'");
 
 
 header('Location: ../../views/backend/comments/list.php');
