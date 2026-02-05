@@ -152,13 +152,19 @@ article p{
 .separateur {
     background-color: #C66D25;
     color: #F7E6CA;
-    align-items: center;
-    gap: 20px;
     margin-bottom: 50px;
     margin-top: 30px;
-    display: flex;            /* Required for alignment properties to work */
-    justify-content: center;  /* Centers content horizontally */
-    align-items: center;      /* Centers content vertically */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 60px; /* Optional: gives the bar a consistent height */
+    gap: 20px;
+}
+
+.separateur p {
+    margin: 0 !important;   /* !important ensures it beats the general article p rule */
+    padding: 0 !important; 
+    font-size: 18px;
 }
 
 .separateur img {
@@ -166,10 +172,6 @@ article p{
     height: 50px;
 }
 
-.separateur p {
-    margin: 0;
-    font-size: 18px;
-}
 
 .comments-section {
     margin-top: 40px;
@@ -205,6 +207,7 @@ article p{
     50% { transform: translateY(-20px) rotate(5deg); }
     100% { transform: translateY(0px) rotate(0deg); }
 /*  HOME section 1 (stripes + orange band)  */
+}
 
 .hero-mock{
   /* striped background  */
@@ -250,7 +253,6 @@ article p{
     left: 15%; 
     animation-delay: 2s; 
 }
-}
 
 /* Theme */
 :root {
@@ -265,7 +267,6 @@ article p{
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Playfair Display', serif;
     background-color: var(--bg-cream);
     color: var(--chocolat);
 }
