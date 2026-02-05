@@ -15,8 +15,9 @@ $affichageNumCom = null;
 if(isset($_GET["dtCreaCom"])){
     $numComment = $_GET["dtCreaCom"];
     $affichageNumCom = sql_select("COMMENT", "numCom", "dtCreaCom = \"$numComment\"");
-    var_dump($affichageNumCom);
+    // var_dump($affichageNumCom);
 }
+//num article
 if(isset($_GET["dtCreaCom"])){
     $numArt = $_GET["dtCreaCom"];
     $affichageNumArt = sql_select("ARTICLE COMMENT", "numArt", "numArt = \"$numArt\"");
@@ -43,18 +44,15 @@ if(isset($_GET["dtCreaCom"])){
 <div class="container">
     <div class="row">
         <div class="col-md-12">
+            <br />
             <h1>Commentaire contrôlé : Modifier</h1>
         </div>
         <div class="col-md-12">
             <!-- Form to create a new statut -->
-            <form action="<?php echo ROOT_URL . '/api/comments/create.php' ?>" method="post">
+            <form action="<?php echo ROOT_URL . '/api/comments/update.php' ?>" method="get">
                 <div class="form-group">
                     <label for="numArt">Numéro article</label>
-                    <select id="numArt" name="numArt" class="form-control" autofocus="autofocus" >
-                        <?php foreach($affichageNumArt as $num) {
-                            echo ("<option value=". $num["numArt"] . ">" . $num["numArt"] .  "</option>"); }
-                            ?>
-                    </select>
+                    <input id="numArt" name="numArt" class="form-control" type ="text" value ="<?php echo($affichageNumArt)?>">
                 </div>
                 <br />
                 <div class="form-group">
@@ -91,8 +89,8 @@ if(isset($_GET["dtCreaCom"])){
                 </div>
                 <br />
                 <div class="form-group">
-                    <label for="libStat" class = "disabled">Date de Création Commentaire</label>
-                    <input id="libStat" name="libStat" class="form-control" type="text" value ="<?php echo($CreaCom); ?>" disabled>
+                    <label for="dtCreaCom" class = "disabled">Date de Création Commentaire</label>
+                    <input id="dtCreaCom" name="dtCreaCom" class="form-control" type="text" value ="<?php echo($CreaCom); ?>" disabled>
                 </div>
                 <br />
                 <div class="form-group">
