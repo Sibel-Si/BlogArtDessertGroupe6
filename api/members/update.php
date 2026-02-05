@@ -1,5 +1,6 @@
 <?php
 
+require_once $_SERVER['DOCUMENT_ROOT'] . '/functions/ctrlSaisies.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/config.php';
 
 // Check if member ID is provided

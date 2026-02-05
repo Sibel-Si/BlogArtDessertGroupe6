@@ -1,7 +1,10 @@
 <?php
 
 session_start();
-require_once '../../config.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/functions/ctrlSaisies.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/functions/query/connect.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/config.php';
+
 
 $numM = isset($_POST['numM']) ? (int)$_POST['numM'] : 0;
 if ($numM <= 0) {
@@ -10,7 +13,7 @@ if ($numM <= 0) {
     exit();
 }
 
-$recaptchaToken = $_POST['g-recaptcha-response'] ?? '';
+/* $recaptchaToken = $_POST['g-recaptcha-response'] ?? '';
 if (empty($recaptchaToken)) {
     $_SESSION['error_message'] = "Veuillez vérifier reCAPTCHA.";
     header('Location: ../../views/backend/members/delete.php?numM=' . $numM);
@@ -42,6 +45,9 @@ if (empty($recaptchaData['success']) || $recaptchaData['score'] < 0.5) {
     exit();
 }
 
+*/ 
+
+
 $member = sql_select('MEMBRE', '*', "numMemb = $numM");
 if (!$member || !isset($member[0])) {
     $_SESSION['error_message'] = "Membre non trouvé.";
@@ -51,7 +57,17 @@ if (!$member || !isset($member[0])) {
 $member = $member[0];
 
 try {
-    $DB = sql_connect();
+    global $DB; // Tell PHP to use the global database variable
+    
+    if (!$DB) {
+        sql_connect(); // This function populates $DB internally
+    }
+
+    // Double check that it worked
+    if (!$DB) {
+        throw new Exception("La connexion à la base de données a échoué.");
+    }
+
     $DB->beginTransaction();
 
     $stmt = $DB->prepare("DELETE FROM COMMENT WHERE numMemb = :numMemb");
@@ -65,13 +81,16 @@ try {
 
     $DB->commit();
 
-    $_SESSION['success_message'] = "Le membre #$numM ({$member['pseudoMemb']}) a été supprimé avec succès.";
+    $_SESSION['success_message'] = "Le membre #$numM a été supprimé.";
     header('Location: ../../views/backend/members/list.php');
     exit();
 
 } catch (Exception $e) {
-    if ($DB->inTransaction()) $DB->rollBack();
-    $_SESSION['error_message'] = "Erreur lors de la suppression : " . $e->getMessage();
+    // Safety: check if $DB is an object before calling rollBack
+    if (isset($DB) && $DB instanceof PDO && $DB->inTransaction()) {
+        $DB->rollBack();
+    }
+    $_SESSION['error_message'] = "Erreur : " . $e->getMessage();
     header('Location: ../../views/backend/members/delete.php?numM=' . $numM);
     exit();
 }
