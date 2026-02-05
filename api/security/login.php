@@ -78,8 +78,6 @@ if (!password_verify($pass, $membre[0]['passMemb'])) {
 
 // 7. Success → Create session
 $_SESSION['id_user'] = $membre[0]['numMemb'];
-$_SESSION['pseudoMemb'] = $membre[0]['pseudoMemb'];
-$_SESSION['numStat'] = (int)$membre[0]['numStat'];
 
 header('Location: /');
 exit;
