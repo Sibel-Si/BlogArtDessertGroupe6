@@ -24,6 +24,7 @@ unset($_SESSION['login_alert']);
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Della+Respira&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="<?php echo ROOT_URL . '/src/css/style.css' ?>" />
+     <link rel="stylesheet" href="<?php echo ROOT_URL . '/src/css/stylehome.css' ?>" />
 </head>
 <body>
 <nav class="navbar-expand-lg navbar">
