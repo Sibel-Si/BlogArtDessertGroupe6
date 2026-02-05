@@ -11,7 +11,7 @@ $libCom = sql_select("COMMENT","libCom");
 $affichageNumCom = null;
 
     // var_dump($_GET);
-
+//affichage numéro commentaire
 if(isset($_GET["dtCreaCom"])){
     $numComment = $_GET["dtCreaCom"];
     $affichageNumCom = sql_select("COMMENT", "numCom", "dtCreaCom = \"$numComment\"");
@@ -23,6 +23,18 @@ if(isset($_GET["dtCreaCom"])){
     var_dump($affichageNumArt);
 }
 
+// date création commentaire
+if(isset($_GET["dtCreaCom"])){
+    $CreaCom = $_GET["dtCreaCom"];
+    // var_dump($affichageCreaCom);
+}
+
+// date modération commentaire
+if(isset($_GET["dtCreaCom"])){
+    $ModCom = $_GET["dtCreaCom"];
+    $affichageModCom = sql_select("COMMENT", "dtModCom", "dtCreaCom = \"$ModCom\"");
+    // var_dump($affichageModCom);
+}
 // $affichageNumArt = $affichageNumArt[0];
 // var_dump($affichageNumArt);
 
@@ -80,12 +92,12 @@ if(isset($_GET["dtCreaCom"])){
                 <br />
                 <div class="form-group">
                     <label for="libStat" class = "disabled">Date de Création Commentaire</label>
-                    <input id="libStat" name="libStat" class="form-control" type="text" value ="<?php //echo($commentaires['dtCreaCom']); ?>" disabled>
+                    <input id="libStat" name="libStat" class="form-control" type="text" value ="<?php echo($CreaCom); ?>" disabled>
                 </div>
                 <br />
                 <div class="form-group">
                     <label for="libStat" class = "disabled">Date de Modération Commentaire</label>
-                    <input id="libStat" name="libStat" class="form-control" type="text" value ="<?php //echo($commentaires['dtCreaCom']); ?>" disabled>
+                    <input id="libStat" name="libStat" class="form-control" type="text" value ="<?php echo($affichageModCom);?>" disabled>
                 </div>
                 <br />
                 <h2>Commentaire</h2>
