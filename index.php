@@ -46,6 +46,68 @@
 
   </div>
 </section>
+<?php
+
+/* якщо sql_select() не бачить — підключи лоадер функцій */
+require_once __DIR__ . '/functions/global.inc.php';
+
+/* Забираємо статті з БД */
+$articles = sql_select(
+  "article",
+  "numArt, libTitrArt, libChapoArt, libAccrochArt, urlPhotArt, dtCreaArt",
+  null,
+  null,
+  "dtCreaArt DESC",
+  6
+);
+?>
+
+<!-- ...тут твій existing home контент... -->
+
+<section class="home-articles py-4">
+  <div class="container">
+    <h3 class="mb-4">Nos articles</h3>
+
+   <div class="row row-cols-1 row-cols-md-3 row-cols-lg-3 g-4">
+      <?php foreach ($articles as $a): ?>
+        <?php
+          $img = !empty($a['urlPhotArt'])
+            ? "/src/uploads/" . $a['urlPhotArt']
+            : "/src/images/article.png";
+        ?>
+        <div class="col">
+          <article class="card h-100">
+            <img
+              src="<?= htmlspecialchars($img) ?>"
+              class="card-img-top"
+              alt="Image article"
+            >
+
+            <div class="card-body">
+              <h5 class="card-title mb-2">
+                <?= htmlspecialchars($a['libTitrArt'] ?? '') ?>
+              </h5>
+
+              <p class="card-text mb-2">
+                <?= htmlspecialchars($a['libChapoArt'] ?? '') ?>
+              </p>
+
+              <p class="card-text">
+                <small class="text-muted">
+                  <?= htmlspecialchars($a['libAccrochArt'] ?? '') ?>
+                </small>
+              </p>
+            </div>
+          </article>
+        </div>
+      <?php endforeach; ?>
+    </div>
+
+  </div>
+</section>
+
+<?php require_once 'footer.php'; ?>
+
 
 
 </main>

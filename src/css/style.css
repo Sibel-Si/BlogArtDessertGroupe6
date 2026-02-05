@@ -196,7 +196,8 @@ article p{
 
 
 
-/* ===== HOME макет (stripes + orange band) ===== */
+
+/*  HOME макет (stripes + orange band)  */
 
 .hero-mock{
   /* striped background like mockup */
@@ -280,7 +281,7 @@ article p{
 
 
 
-/* ===== HOME section 2 (image + description + button) ===== */
+/*  HOME section 2 (image + description + button) */
 .home-section2{
   background: #F6E9D2; /* кремовий як в макеті */
   padding: 0;
@@ -360,14 +361,4 @@ article p{
   filter: brightness(0.96);
 }
 
-/* responsive */
-@media (max-width: 900px){
-  .home-section2-inner{
-    grid-template-columns: 1fr;
-    gap: 24px;
-    padding: 30px 0;
-  }
-  .s2-left, .s2-right{
-    min-height: 320px;
-  }
-}
+
