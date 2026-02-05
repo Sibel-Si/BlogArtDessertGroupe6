@@ -40,7 +40,11 @@ unset($_SESSION['login_alert']);
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item"><a class="nav-link btn btn-fonce" href="/">Home</a></li>
-        <li class="nav-item"><a class="nav-link btn btn-fonce" href="/views/backend/dashboard.php">Admin</a></li>
+        <?php if (IS_LOGGED_IN && in_array($_SESSION['numStat'], [1, 2])): ?>
+            <li class="nav-item">
+                <a class="nav-link btn btn-fonce" href="/views/backend/dashboard.php">Admin</a>
+            </li>
+        <?php endif; ?>
       </ul>
     </div>
 
@@ -51,7 +55,7 @@ unset($_SESSION['login_alert']);
 
       <?php if (IS_LOGGED_IN): ?>
           <span class="me-2 text-dark"><strong><?= htmlspecialchars($_SESSION['pseudoMemb']) ?></strong></span>
-          <a class="btn btn-danger m-1" href="/api/security/disconect.php" role="button">Logout</a>
+          <a class="btn btn-fonce m-1" href="/api/security/disconnect.php" role="button">Logout</a>
       <?php else: ?>
           <a class="btn btn-fonce m-1" href="/views/backend/security/login.php" role="button">Login</a>
           <a class="btn btn-fonce m-1" href="/views/backend/security/signup.php" role="button">Sign up</a>
