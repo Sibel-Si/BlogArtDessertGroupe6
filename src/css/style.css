@@ -197,6 +197,7 @@ article p{
 
 
 
+<<<<<<< Updated upstream
 
 
   /* Animation de flottement */
@@ -204,6 +205,18 @@ article p{
     0% { transform: translateY(0px) rotate(0deg); }
     50% { transform: translateY(-20px) rotate(5deg); }
     100% { transform: translateY(0px) rotate(0deg); }
+=======
+/*  HOME section 1 (stripes + orange band)  */
+
+.hero-mock{
+  /* striped background  */
+  background: repeating-linear-gradient(
+    90deg,
+    #3b160c 0 70px,
+    #f6f2ee 70px 140px
+  );
+  padding: 70px 0; /* height of stripes area top/bottom */
+>>>>>>> Stashed changes
 }
 
 /* Style général des emojis */
@@ -435,4 +448,21 @@ body {
 
 
 
+
+
+
+/* ARTICLES (BOOTSTRAP CARDS)*/
+.home-articles {
+  background-color: #F7E6CA;
+  padding: 200px 0;
+}
+
+/* card */
+.home-articles .card{
+  background-color: #F3D9B6;
+  border: 2px solid #E7A564;
+  border-radius: 14px;
+  overflow: hidden;
+  height: 100%;
+}
 
