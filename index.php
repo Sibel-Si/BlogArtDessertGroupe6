@@ -27,17 +27,11 @@
         <img src="/src/images/fb56daae739c9bdb50421bc77543bc4f.jpg" alt="Image pâtisserie">
       </div>
       
-<main class="content-grid-container">
-        <div class="bg-illustration muffin">🧁</div>
-        <div class="bg-illustration pain">🍞</div>
-        <div class="bg-illustration croissant">🥐</div>
-        <div class="bg-illustration baguette">🥖</div>
 
 
       <!-- RIGHT text content -->
       <div class="s2-right">
-        <div class="s2-icon">
-          <img src="/src/images/muffin-icon.png" alt="Icône pâtisserie">
+        
         </div>
         
 
@@ -59,11 +53,25 @@
 /* якщо sql_select() не бачить — підключи лоадер функцій */
 require_once __DIR__ . '/functions/global.inc.php';
 
-/* Забираємо статті з БД */
+/*AJOUT FILTRE THEMATIQUE (SANS CASSER TON CODE) */
+/* 1) Беремо всі тематики для кнопок */
+$themes = sql_select("thematique", "numThem, libThem", null, null, "numThem ASC", null);
+
+/* 2) Яка тематика вибрана (через GET) */
+$them = isset($_GET['them']) ? intval($_GET['them']) : 0;
+
+/* 3) WHERE для статей */
+$where = null;
+if ($them > 0) {
+  $where = "numThem = " . $them;   // ok, бо intval()
+}
+
+
+/* Забираємо статті з БД (тепер з фільтром) */
 $articles = sql_select(
   "article",
-  "numArt, libTitrArt, libChapoArt, libAccrochArt, urlPhotArt, dtCreaArt",
-  null,
+  "numArt, libTitrArt, libChapoArt, libAccrochArt, urlPhotArt, dtCreaArt, numThem",
+  $where,
   null,
   "dtCreaArt DESC",
   6
@@ -73,6 +81,22 @@ $articles = sql_select(
   <section class="home-articles py-4">
     <div class="container">
       <h3 class="mb-4">Nos articles</h3>
+
+      <!--  AJOUT BOUTONS FILTRE  -->
+      <div class="d-flex flex-wrap gap-2 mb-4">
+        <a href="?them=0"
+           class="btn btn-moyen <?= ($them === 0 ? 'active' : '') ?>">
+          Tout
+        </a>
+
+        <?php foreach ($themes as $t): ?>
+          <a href="?them=<?= (int)$t['numThem'] ?>"
+             class="btn btn-clair <?= ($them === (int)$t['numThem'] ? 'active' : '') ?>">
+            <?= htmlspecialchars($t['libThem']) ?>
+          </a>
+        <?php endforeach; ?>
+      </div>
+    
 
       <div class="row row-cols-1 row-cols-md-3 row-cols-lg-3 g-4">
         <?php foreach ($articles as $a): ?>

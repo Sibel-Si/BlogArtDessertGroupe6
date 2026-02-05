@@ -1,7 +1,8 @@
 <?php
 
 session_start();
-require_once '../../config.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/functions/ctrlSaisies.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/config.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     $_SESSION['error_message'] = 'Méthode non autorisée.';
@@ -9,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 
-$recaptcha_secret = "6LcBgWAsAAAAAPOCwFqU7RpKNOrAZV6tagbaKL5S";
+/*recaptcha_secret = "6LcBgWAsAAAAAPOCwFqU7RpKNOrAZV6tagbaKL5S";
 $recaptcha_response = $_POST['g-recaptcha-response'] ?? '';
 
 if (empty($recaptcha_response)) {
@@ -39,6 +40,7 @@ if (!$result['success'] || $result['score'] < 0.5) {
     header('Location: ../../views/backend/members/create.php');
     exit;
 }
+*/
 
 $pseudoMemb = ctrlSaisies($_POST['pseudoMemb'] ?? '');
 $prenomMemb = ctrlSaisies($_POST['prenomMemb'] ?? '');

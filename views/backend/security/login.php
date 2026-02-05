@@ -5,8 +5,7 @@ $err = $_SESSION['login_error'] ?? '';
 unset($_SESSION['login_error']);
 ?>
 
-<script src="https://www.google.com/recaptcha/api.js?render=6LcBgWAsAAAAAJXlt-QCfOoIE1-qSXXHNFCa0usb"></script>
-
+<!-- <script src="https://www.google.com/recaptcha/api.js?render=6LcBgWAsAAAAAAJXlt-QCfOoIE1-qSXXHNFCa0usb"></script> -->
 <div class="container mt-5" style="max-width: 500px;">
 
     <h2 class="mb-4 text-center">Se connecter</h2>
@@ -42,6 +41,7 @@ unset($_SESSION['login_error']);
     </form>
 </div>
 
+<!--
 <script>
 document.getElementById('loginForm').addEventListener('submit', function(e) {
     e.preventDefault();
@@ -54,5 +54,6 @@ document.getElementById('loginForm').addEventListener('submit', function(e) {
     });
 });
 </script>
+-->
 
 <?php include '../../../footer.php'; ?>

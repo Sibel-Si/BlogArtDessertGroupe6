@@ -1,12 +1,11 @@
 <?php
 require_once 'config.php';
-require_once __DIR__ . '/config/security.php'; // Load security logic
+require_once __DIR__ . '/config/security.php';
 
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-// Check for login alerts
 $login_alert = $_SESSION['login_alert'] ?? '';
 unset($_SESSION['login_alert']);
 ?>
@@ -20,14 +19,16 @@ unset($_SESSION['login_alert']);
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="shortcut icon" type="image/x-icon" href="src/images/article1.png" />
     <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://www.google.com/recaptcha/api.js"></script>
+    <!-- <script src="https://www.google.com/recaptcha/api.js"></script> -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Della+Respira&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="<?php echo ROOT_URL . '/src/css/style.css' ?>" />
-     <link rel="stylesheet" href="<?php echo ROOT_URL . '/src/css/stylehome.css' ?>" />
+    <link rel="stylesheet" href="<?php echo ROOT_URL . '/src/css/stylehome.css' ?>" />
 </head>
-<body>
+
+<body class="d-flex flex-column min-vh-100">
+
 <nav class="navbar-expand-lg navbar">
   <div class="container-fluid">
     <div>
@@ -51,7 +52,7 @@ unset($_SESSION['login_alert']);
     </div>
 
     <div class="d-flex align-items-center">
-      <form class="d-flex me-2" role="search" action ="/views/frontend/search.php" method ="get">
+      <form class="d-flex me-2" role="search" action="/views/frontend/search.php" method="get">
           <input type="search" placeholder="Rechercher..." name="recherche" value="<?= isset($_GET['recherche']) ? htmlspecialchars($_GET['recherche']) : '' ?>">
       </form>
 

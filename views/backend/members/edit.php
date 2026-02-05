@@ -1,6 +1,7 @@
 <?php
 
-include '../../../header.php';// Get member ID from GET parameter
+include '../../../header.php';
+
 if (!isset($_GET['numM'])) {
     $_SESSION['error_message'] = "ID du membre manquant.";
     header('Location: list.php');
@@ -9,7 +10,6 @@ if (!isset($_GET['numM'])) {
 
 $numM = $_GET['numM'];
 
-// Load member data if available
 $member = function_exists('sql_select') ? sql_select('MEMBRE', '*', "numMemb = $numM") : null;
 if (!$member) {
     $_SESSION['error_message'] = "Membre non trouvé.";
@@ -19,12 +19,12 @@ if (!$member) {
 
 $member = $member[0];
 
-// Load statuses for select if available
 $statuts = function_exists('sql_select') ? sql_select('STATUT', '*', null, null, 'libStat ASC') : [];
 
-// Format date if available
 $dtCrea = isset($member['dtCreaMemb']) ? $member['dtCreaMemb'] : 'N/A';
 ?>
+
+<div class="flex-grow-1">
 
 <div class="container d-flex justify-content-center mt-4">
 	<div class="w-100" style="max-width:900px;">
@@ -53,7 +53,7 @@ $dtCrea = isset($member['dtCreaMemb']) ? $member['dtCreaMemb'] : 'N/A';
 		<div class="card border-0 bg-transparent shadow-none">
 			<div class="card-body p-0">
 			<form id="memberEditForm" method="post" action="<?php echo defined('ROOT_URL') ? ROOT_URL . '/api/members/update.php' : '../../api/members/update.php'; ?>">
-				<!-- Hidden field for member ID -->
+
 				<input type="hidden" name="numM" value="<?php echo htmlspecialchars($numM); ?>">
 
 				<div class="form-row">
@@ -118,7 +118,6 @@ $dtCrea = isset($member['dtCreaMemb']) ? $member['dtCreaMemb'] : 'N/A';
 					</div>
 				</div>
 
-
 				<div class="d-flex gap-3 mt-4">
 					<a href="list.php" class="btn btn-moyen">List</a>
 					<button type="submit" class="btn btn-fonce">Confirmer Edit ?</button>
@@ -126,6 +125,8 @@ $dtCrea = isset($member['dtCreaMemb']) ? $member['dtCreaMemb'] : 'N/A';
 			</form>
 		</div>
 	</div>
+</div>
+
 </div>
 
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
@@ -137,13 +138,10 @@ function togglePassword(){
 }
 
 document.getElementById('memberEditForm').addEventListener('submit', function(e){
-	var prenom = document.getElementById('prenomMemb').value.trim();
-	var nom = document.getElementById('nomMemb').value.trim();
 	var email = document.getElementById('eMailMemb').value.trim();
 	var emailc = document.getElementById('confirmEmailMemb').value.trim();
 	var pass = document.getElementById('passMemb').value;
 
-	// If password is entered, validate it
 	if(pass !== ''){
 		var passRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[\s\S]{8,15}$/;
 		if(!passRegex.test(pass)){
@@ -152,7 +150,6 @@ document.getElementById('memberEditForm').addEventListener('submit', function(e)
 		}
 	}
 
-	// Validate emails match
 	if(email !== emailc){
 		alert('Les adresses email doivent être identiques.');
 		e.preventDefault(); return false;
