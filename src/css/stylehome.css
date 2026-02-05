@@ -1,3 +1,10 @@
+/*genéral*/
+ body {
+        background-color: #F7E6CA;
+        color: #561D0B;
+        font-family: 'della respira', sans-serif;
+    }
+
 /*  HOME макет (stripes + orange band)  */
 
 .hero-mock{
@@ -160,14 +167,71 @@
   filter: brightness(0.96);
 }
 
-/* responsive */
-@media (max-width: 900px){
-  .home-section2-inner{
-    grid-template-columns: 1fr;
-    gap: 24px;
-    padding: 30px 0;
-  }
-  .s2-left, .s2-right{
-    min-height: 320px;
-  }
+
+/* ===========================
+   HOME – ARTICLES CARDS
+   =========================== */
+
+.home-articles{
+  background-color: #F7E6CA;
+  padding: 60px 0;
+}
+
+/* card */
+.home-articles .card{
+  background-color: #F3D9B6;
+  border: 2px solid #E7A564;
+  border-radius: 14px;
+  overflow: hidden;
+  height: 100%;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.home-articles .card:hover{
+  transform: translateY(-4px);
+  box-shadow: 0 10px 22px rgba(0,0,0,0.14);
+}
+
+/* image */
+.home-articles .card-img-top{
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  display: block;
+}
+
+/* body */
+.home-articles .card-body{
+  padding: 16px;
+}
+
+/* title */
+.home-articles .card-title{
+  font-size: 18px;
+  line-height: 1.2;
+  color: #561D0B;
+  margin-bottom: 8px;
+}
+
+/* chapo + accroche */
+.home-articles .card-text{
+  font-size: 14px;
+  line-height: 1.4;
+  color: #561D0B;
+  margin-bottom: 8px;
+}
+
+/* small text */
+.home-articles .card-text small{
+  font-size: 13px;
+  color: #7a4c2e;
+}
+
+/* IMPORTANT FIX :
+   neutralise ton ancien style global "article p" */
+.home-articles article p{
+  padding: 0;
+  margin: 0 0 8px 0;
+}
 

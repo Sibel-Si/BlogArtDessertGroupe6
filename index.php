@@ -76,7 +76,7 @@ $articles = sql_select(
             : "/src/images/article.png";
         ?>
         <div class="col">
-          <article class="card h-100">
+          <article class="card h-100"> 
             <img
               src="<?= htmlspecialchars($img) ?>"
               class="card-img-top"
