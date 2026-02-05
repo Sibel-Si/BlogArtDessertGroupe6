@@ -1,7 +1,5 @@
 <?php require_once 'header.php'; ?>
 
-<main class="home">
-
   <section class="hero-mock">
     <div class="hero-mock-inner">
 
@@ -21,7 +19,6 @@
 
     </div>
   </section>
-
   <section class="home-section2">
     <div class="home-section2-inner">
 
@@ -29,12 +26,20 @@
       <div class="s2-left">
         <img src="/src/images/fb56daae739c9bdb50421bc77543bc4f.jpg" alt="Image pâtisserie">
       </div>
+      
+<main class="content-grid-container">
+        <div class="bg-illustration muffin">🧁</div>
+        <div class="bg-illustration pain">🍞</div>
+        <div class="bg-illustration croissant">🥐</div>
+        <div class="bg-illustration baguette">🥖</div>
+
 
       <!-- RIGHT text content -->
       <div class="s2-right">
         <div class="s2-icon">
           <img src="/src/images/muffin-icon.png" alt="Icône pâtisserie">
         </div>
+        
 
         <div class="s2-text">
           <p>
@@ -46,7 +51,9 @@
       </div>
 
     </div>
+    
   </section>
+
 
 <?php
 /* якщо sql_select() не бачить — підключи лоадер функцій */

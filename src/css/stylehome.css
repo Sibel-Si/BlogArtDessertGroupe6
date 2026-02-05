@@ -235,3 +235,48 @@
   margin: 0 0 8px 0;
 }
 
+/* 1. L'animation de flottement (mouvement de haut en bas + rotation) */
+@keyframes floatingBg {
+    0% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-30px) rotate(10deg); }
+    100% { transform: translateY(0px) rotate(0deg); }
+}
+
+/* 2. Style commun à tous les emojis de fond */
+.bg-decoration {
+    position: fixed; /* Reste en place même quand on scroll */
+    font-size: 90px;
+    opacity: 0.15;   /* Très discret pour ne pas gêner la lecture */
+    z-index: -1;     /* Passe derrière tout le contenu */
+    filter: grayscale(1); /* Effet "dessin" gris comme sur tes images */
+    pointer-events: none; /* On ne peut pas cliquer dessus par erreur */
+    animation: floatingBg 8s ease-in-out infinite;
+}
+
+/* 3. Positions spécifiques pour éviter qu'ils soient regroupés */
+.muffin { 
+    top: 15%; 
+    right: 8%; 
+    animation-duration: 6s; /* Vitesse différente */
+}
+
+.pain { 
+    top: 35%; 
+    left: 5%; 
+    animation-delay: 1s; /* Décalage pour un effet naturel */
+    animation-duration: 9s;
+}
+
+.baguette { 
+    bottom: 20%; 
+    right: 5%; 
+    animation-delay: 0.5s;
+    animation-duration: 7s;
+}
+
+.croissant { 
+    bottom: 10%; 
+    left: 10%; 
+    animation-delay: 2s;
+    animation-duration: 10s;
+}
