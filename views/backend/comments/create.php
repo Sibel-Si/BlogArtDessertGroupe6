@@ -23,6 +23,7 @@ $commentaire = $commentaire[0];
                     <label for="numMemb">Pseudo</label>
                     <input id="libStat" name="libStat" class="form-control" type="text" value ="">
                 </div>
+                <br />
                 <div class="form-group">
                     <label for="libStat" >Nom</label>
                     <input id="libStat" name="libStat" class="form-control" type="text" value="<?php /*
