@@ -2,27 +2,17 @@
 
 include '../../../header.php'; // contains the header and call to config.php
 
-
 //Load all statuts
+
 
 $commentairesattente = sql_select('COMMENT', "*", 'attModOK = 0 AND delLogiq = 0');
 $commentaireOK = sql_select('COMMENT', "*", 'attModOK = 1 AND delLogiq = 0');
-$articles = sql_select("ARTICLE", "*");
 $commentaireSupLog = sql_select('COMMENT', "*", 'delLogiq = 1');
-$membres = sql_select("MEMBRE", "*");
+$infosMembArt = sql_select("comment INNER JOIN article ON article.numArt = comment.numArt INNER JOIN membre ON comment.numMemb=membre.numMemb", "*");
+$infosMembArt = $infosMembArt[0];
 
-//test de requetes sql
+//SELECT * FROM article INNER JOIN membre ON article.numMemb = membre.numMemb;
 
-// $commentairesinfos = sql_select("COMMENT", "numCom, numArt, numMemb", "comment.numMemb = membre.numMemb and comment.numArt = article.libTitrArt");
-// SELECT 
-//      COMMENT.numCom,
-//      comment.numArt,
-//      comment.numMemb
-//  FROM
-//      comment, membre, article
-// WHERE comment.numMemb = membre.pseudoMemb and comment.numArt = article.libTitrArt;
-
-// var_dump($commentairemechant);
 
 ?>
 
@@ -46,10 +36,8 @@ $membres = sql_select("MEMBRE", "*");
                     <?php 
                     foreach($commentairesattente as $commentaire){ ?>
                         <tr>
-                            <td><?php 
-                            // $intMemb = ["numArt"]-1;
-                            echo($commentaire['numArt']); ?></td> <!--faire en sorte de mettre le titre des articles-->
-                            <td><?php echo($commentaire["numMemb"]); ?></td> <!-- idem pour pseudo-->
+                            <td><?php echo($infosMembArt["libTitrArt"]); ?></td> <!--faire en sorte de mettre le titre des articles-->
+                            <td><?php echo($infosMembArt["pseudoMemb"]); ?></td> <!-- idem pour pseudo-->
                             <td><?php echo($commentaire['dtCreaCom']); ?></td>
                             <td><?php echo($commentaire['libCom']); ?></td>
                             <td>
@@ -75,7 +63,7 @@ $membres = sql_select("MEMBRE", "*");
                 <tbody>
                     <?php foreach($commentaireOK as $commentaire){ ?>
                         <tr>
-                            <td><?php echo($commentaire['numMemb']); ?></td> <!--faire en sorte de mettre le titre des articles-->
+                            <td><?php echo($infosMembArt["pseudoMemb"]); ?></td> <!--faire en sorte de mettre le titre des articles-->
                             <td><?php echo($commentaire["dtModCom"]); ?></td> <!-- idem pour pseudo-->
                             <td><?php echo($commentaire['libCom']); ?></td>
                             <td><?php echo($commentaire['attModOK']); ?></td>
@@ -102,7 +90,7 @@ $membres = sql_select("MEMBRE", "*");
                 <tbody>
                     <?php foreach($commentaireSupLog as $commentaire){ ?>
                         <tr>
-                            <td><?php echo($commentaire['numMemb']); ?></td> <!--faire en sorte de mettre le titre des articles-->
+                            <td><?php echo($infosMembArt["pseudoMemb"]); ?></td> <!--faire en sorte de mettre le titre des articles-->
                             <td><?php echo($commentaire["dtDelLogCom"]); ?></td> <!-- idem pour pseudo-->
                             <td><?php echo($commentaire['libCom']); ?></td>
                             <td><?php echo($commentaire['delLogiq']); ?></td>
@@ -129,7 +117,7 @@ $membres = sql_select("MEMBRE", "*");
                 <tbody>
                     <?php foreach($commentaireSupLog as $commentaire){ ?>
                         <tr>
-                            <td><?php echo($commentaire['numMemb']); ?></td> <!--faire en sorte de mettre le titre des articles-->
+                            <td><?php echo($infosMembArt["pseudoMemb"]); ?></td> <!--faire en sorte de mettre le titre des articles-->
                             <td><?php echo($commentaire["dtDelLogCom"]); ?></td> <!-- idem pour pseudo-->
                             <td><?php echo($commentaire['libCom']); ?></td>
                             <td><?php echo($commentaire['delLogiq']); ?></td>

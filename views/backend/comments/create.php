@@ -1,10 +1,13 @@
 <?php
 
+//CREATE NON AFFICHE
 include '../../../header.php';
 
-$articles = sql_select("ARTICLE", "*");
-$membres = sql_select("MEMBRE", "*");
-$commentaires = sql_select("COMMENT", "*");
+// $numCom = intval($_GET["numCom"]);
+//SELECT * FROM article INNER JOIN membre ON article.numMemb = membre.numMemb;
+$commentaire = sql_select("article INNER JOIN membre ON article.numMemb = membre.numMemb INNER JOIN", "*");
+$commentaire = $commentaire[0];
+// var_dump($commentaire);
 
 // récuparation avec session  puis affichage nom prénom
 ?>
@@ -15,18 +18,11 @@ $commentaires = sql_select("COMMENT", "*");
         </div>
         <div class="col-md-12">
             <!-- Form to create a new statut -->
-            <form action="<?php echo ROOT_URL . '/api/comments/create.php' ?>" method="post">
+            <form action="<?php echo ROOT_URL . '/api/comments/create.php' ?>" method="get">
                 <div class="form-group">
                     <label for="numMemb">Pseudo</label>
-                    <select id="numMemb" name="numMemb" class="form-control" autofocus="autofocus" >
-                        <?php
-                        foreach($membres as $membre){ //selection membre par pseudo
-                            echo('<option value ="'. $membre["numMemb"]. '">'. $membre['pseudoMemb']. '</option>');
-                        }
-                        ?>
-                    </select>
+                    <input id="libStat" name="libStat" class="form-control" type="text" value ="">
                 </div>
-                <br />
                 <div class="form-group">
                     <label for="libStat" >Nom</label>
                     <input id="libStat" name="libStat" class="form-control" type="text" value="<?php /*
