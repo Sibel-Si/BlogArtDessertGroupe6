@@ -7,7 +7,14 @@ include '../../../header.php';
 //SELECT * FROM article INNER JOIN membre ON article.numMemb = membre.numMemb;
 $commentaire = sql_select("comment INNER JOIN membre ON comment.numMemb = membre.numMemb INNER JOIN article ON comment.numArt = article.numArt", "*");
 $commentaire = $commentaire[0];
+$articles = sql_select("article", "*");
 // var_dump($commentaire);
+
+$identi = sql_select("membre", "*", "numMemb");
+// var_dump($identi[5-1]);
+$identifiant =$identi[$_SESSION["id_user"]-1];
+// $identifiant = array_search($_SESSION["id_user"], $identi);
+//sql table membres pseudo nom prénom, num membre = id_user session
 
 // récuparation avec session  puis affichage nom prénom
 ?>
@@ -20,18 +27,18 @@ $commentaire = $commentaire[0];
             <!-- Form to create a new statut -->
             <form action="<?php echo ROOT_URL . '/api/comments/create.php' ?>" method="get">
                 <div class="form-group">
-                    <label for="numMemb">Pseudo</label>
-                    <input id="libStat" name="libStat" class="form-control" type="text" value ="">
+                    <label for="pseudoMemb">Pseudo</label>
+                    <input id="pseudoMemb" name="pseudoMemb" class="form-control" type="text" value ="<?php echo($identifiant["pseudoMemb"]);?>" disabled>
                 </div>
                 <br />
                 <div class="form-group">
                     <label for="libStat" >Nom</label>
-                    <input id="libStat" name="libStat" class="form-control" type="text" value=""/> <!--récup choix id prenom + nom avant de les envoyer-->
+                    <input id="libStat" name="libStat" class="form-control" type="text" value="<?php echo($identifiant["nomMemb"]);?>"/> <!--récup choix id prenom + nom avant de les envoyer-->
                 </div>
                 <br />
                 <div class="form-group">
                     <label for="libStat" class = "disabled">Prenom</label>
-                    <input id="libStat" name="libStat" class="form-control" type="text" />
+                    <input id="libStat" name="libStat" class="form-control" type="text" value="<?php echo($identifiant["prenomMemb"]);?>"/>
                 </div>
                 <br />
                 <div class="form-group">

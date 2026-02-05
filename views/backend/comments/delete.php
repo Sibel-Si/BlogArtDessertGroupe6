@@ -66,26 +66,26 @@ $commentaire = $commentaire[0];
                 <label class="form-label mt-4">Je valide le commentaire du membre?</label>
                 <div class="d-flex gap-3">
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="validate" value="oui" required>
+                        <input class="form-check-input" type="radio" name="attModOK" value="oui" required>
                         <label class="form-check-label">Oui</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="validate" value="non" required>
+                        <input class="form-check-input" type="radio" name="attModOK" value="non" required>
                         <label class="form-check-label">Non</label>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="libStat" class = "disabled">Si non, en écrire les raisons : </label>
-                    <textarea id="libStat" name="libStat" class="form-control"></textarea>
+                    <label for="notifComKOAff" class = "disabled">Si non, en écrire les raisons : </label>
+                    <textarea id="notifComKOAff" name="notifComKOAff" class="form-control"></textarea>
                 </div>
                 <label class="form-label mt-4">Je souhaite que le commentaire ne soit plus affiché?</label>
                 <div class="d-flex gap-3">
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="validate" value="oui" required>
+                        <input class="form-check-input" type="radio" name="afficheoui" value="oui" required>
                         <label class="form-check-label">Oui</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="validate" value="non" required>
+                        <input class="form-check-input" type="radio" name="affichenon" value="non" required>
                         <label class="form-check-label">Non</label>
                     </div>
                 </div>
