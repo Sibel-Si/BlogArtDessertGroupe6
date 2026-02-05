@@ -7,15 +7,24 @@ $membres = sql_select("MEMBRE", "*");
 $commentaires = sql_select("COMMENT", "*");
 $libCom = sql_select("COMMENT","libCom");
 
-$affichageNumArt = sql_select("ARTICLE, COMMENT", "*", "article.numArt = comment.numCom");
+// $affichageNumArt = sql_select("ARTICLE, COMMENT", "*", "article.numArt = comment.numCom");
+$affichageNumCom = null;
 
-if(isset($_GET["numCom"])){
-    $numComment = $_GET["numCom"];
-    $affichageNumCom = sql_select("COMMENT", "numCom", "dtCreaCom = $numComment");
+    // var_dump($_GET);
+
+if(isset($_GET["dtCreaCom"])){
+    $numComment = $_GET["dtCreaCom"];
+    $affichageNumCom = sql_select("COMMENT", "numCom", "dtCreaCom = \"$numComment\"");
+    var_dump($affichageNumCom);
+}
+if(isset($_GET["dtCreaCom"])){
+    $numArt = $_GET["dtCreaCom"];
+    $affichageNumArt = sql_select("ARTICLE", "numArt", "numArt = \"$numArt\"");
+    var_dump($affichageNumArt);
 }
 
-
-
+// $affichageNumArt = $affichageNumArt[0];
+// var_dump($affichageNumArt);
 
 // récuparation avec session  puis affichage nom prénom
 ?>
@@ -30,18 +39,19 @@ if(isset($_GET["numCom"])){
                 <div class="form-group">
                     <label for="numArt">Numéro article</label>
                     <select id="numArt" name="numArt" class="form-control" autofocus="autofocus" >
-                        <?php //selection numéro commentaire
-                            echo($affichageNumArt["numArt"]);//à modifier pour faire en sorte qu'en appuyant sur le bouton, ça affiche directement le numéro de l'article
-                        ?>
+                        <?php foreach($affichageNumArt as $num) {
+                            echo ("<option value=". $num["numArt"] . ">" . $num["numArt"] .  "</option>"); }
+                            ?>
                     </select>
                 </div>
                 <br />
                 <div class="form-group">
                     <label for="numCom">Numéro commentaire</label>
                     <select id="numCom" name="numCom" class="form-control" autofocus="autofocus" >
-                        <?php echo($affichageNumCom["numCom"]);
-                            //à modifier pour faire en sorte qu'en appuyant sur le bouton, ça affiche directement le numéro de commentaire qui est égal à la date correspondante dans l'url
-                        ?>
+                        
+                        <?php foreach($affichageNumCom as $num) {
+                            echo ("<option value=". $num["numCom"] . ">" . $num["numCom"] .  "</option>"); }
+                            ?>
                     </select>
                 </div>
                 <br />
@@ -49,7 +59,7 @@ if(isset($_GET["numCom"])){
                     <label for="pseudoMemb" >Pseudo</label>
                     <input id="pseudoMemb" name="pseudoMemb" class="form-control" type="text" value="<?php /*
                     $nomMembActu = sql_select("MEMBRE", "nomMemb", "pseudoMemb =" $pseudoMemb);
-                    echo() */?>" disabled/> <!--récup choix id prenom + nom avant de les envoyer-->
+                    echo() */?>" disabled> <!--récup choix id prenom + nom avant de les envoyer-->
                 </div>
                 <br />
                 <div class="form-group">
@@ -65,12 +75,12 @@ if(isset($_GET["numCom"])){
                 <br />
                 <div class="form-group">
                     <label for="libStat" class = "disabled">Accroche Paragraphe</label>
-                    <input id="libStat" name="libStat" class="form-control" type="text" value ="" disabled/>
+                    <input id="libStat" name="libStat" class="form-control" type="text" value="" disabled>
                 </div>
                 <br />
                 <div class="form-group">
                     <label for="libStat" class = "disabled">Date de Création Commentaire</label>
-                    <input id="libStat" name="libStat" class="form-control" type="text" value =<?php //echo($commentaires['dtCreaCom']); ?> disabled/>
+                    <input id="libStat" name="libStat" class="form-control" type="text" value ="<?php //echo($commentaires['dtCreaCom']); ?>" disabled>
                 </div>
                 <br />
                 <h2>Commentaire</h2>

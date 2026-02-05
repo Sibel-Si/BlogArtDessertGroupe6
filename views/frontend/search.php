@@ -1,7 +1,24 @@
 <?php
 require_once '../../header.php';
 
+
 ?>
+
+<?php 
+
+//SELECT * FROM article WHERE libTitrArt LIKE '%n%';
+
+$motcle = $_GET["recherche"] ?? "";
+$recherFinal = null;
+
+//si motcle existe, on la place dans une variable
+if(isset($motcle)){
+    $recherFinal = sql_select("ARTICLE", "*", "libTitrArt LIKE '%$motcle%'");
+}
+
+var_dump($_SERVER);
+?>
+
 <!-- <h1>Recherche Avancée</h1>
 <h2>Rechercher par thèmes</h2>
 <h2>Recherche libre</h2> -->
@@ -12,8 +29,8 @@ require_once '../../header.php';
 <br />
     <nav class="navbar bg-body-tertiary">
     <div class="container-fluid">
-        <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Rechercher sur le site..." aria-label="Search" value ="<?php echo isset($_POST['recherche']) ? $_POST['recherche'] : '' ?>">
+        <form class="d-flex" role="search"  action="<?php echo($_SERVER["PHP_SELF"]) ?>" method="get">
+        <input class="form-control me-2" id="recherche" type="search" placeholder="Rechercher sur le site..." aria-label="Search" value="<?php echo($motcle) ?>">
         <button class="btn btn-fonce" type="submit">Recherche avancée</button>
         </form>
     </div>
@@ -28,26 +45,16 @@ require_once '../../header.php';
 </thead>
 <tbody>
     <tr>
-        <th scope="row">1</th>
-        <td><?php echo($recherFinal) ?></td>
+        <td><?php 
+        // foreach (){
+        //     echo($recherFinal);
+        // }
+        var_dump($recherFinal)
+        ?></td>
     </tr>
 </tbody>
 </table>
 
-<?php 
-
-//SELECT * FROM article WHERE libTitrArt LIKE '%n%';
-
-$motcle= isset($_POST["recherche"]);
-
-//si motcle existe, on la place dans une variable
-if(isset($motcle)){
-    $rechercheTitr = $motcle["recherche"];
-    $recherFinal = sql_select("ARTICLE", "*", "libTitrArt LIKE '%$rechercheTitr%'");
-    echo($recherFinal);
-}
-
-?>
 
 <?php
 require_once '../../footer.php';

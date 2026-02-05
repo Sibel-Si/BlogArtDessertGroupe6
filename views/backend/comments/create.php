@@ -31,7 +31,7 @@ $commentaires = sql_select("COMMENT", "*");
                     <label for="libStat" >Nom</label>
                     <input id="libStat" name="libStat" class="form-control" type="text" value="<?php /*
                     $nomMembActu = sql_select("MEMBRE", "nomMemb", "pseudoMemb =" $pseudoMemb);
-                    echo() */?>" disabled/> <!--récup choix id prenom + nom avant de les envoyer-->
+                    echo() */?>" disabled /> <!--récup choix id prenom + nom avant de les envoyer-->
                 </div>
                 <br />
                 <div class="form-group">
