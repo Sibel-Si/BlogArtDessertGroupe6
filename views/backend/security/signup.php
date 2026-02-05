@@ -2,7 +2,7 @@
 include '../../../header.php';
 ?>
 
-<script src="https://www.google.com/recaptcha/api.js?render=6LcBgWAsAAAAAJXlt-QCfOoIE1-qSXXHNFCa0usb"></script>
+<!-- <script src="https://www.google.com/recaptcha/api.js?render=6LcBgWAsAAAAAJXlt-QCfOoIE1-qSXXHNFCa0usb"></script> -->
 
 <div class="container mt-5" style="max-width: 500px;">
 
@@ -55,17 +55,17 @@ include '../../../header.php';
 </div>
 
 <script>
-document.getElementById('signupForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    grecaptcha.ready(function() {
-        grecaptcha.execute('6LcBgWAsAAAAAJXlt-QCfOoIE1-qSXXHNFCa0usb', {action: 'submit'})
-        .then(function(token) {
-            document.getElementById('g-recaptcha-response').value = token;
-            document.getElementById('signupForm').submit();
-        });
-    });
-});
-</script>
+//document.getElementById('signupForm').addEventListener('submit', function(e) {
+    //e.preventDefault();
+    //grecaptcha.ready(function() {
+        //grecaptcha.execute('6LcBgWAsAAAAAJXlt-QCfOoIE1-qSXXHNFCa0usb', {action: 'submit'})
+        //.then(function(token) {
+            //document.getElementById('g-recaptcha-response').value = token;
+            //document.getElementById('signupForm').submit();
+        //});
+    //});
+//});
+//</script>
 
 <?php
 include $_SERVER['DOCUMENT_ROOT'] . '/footer.php';

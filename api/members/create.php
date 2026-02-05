@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 
-$recaptcha_secret = "6LcBgWAsAAAAAPOCwFqU7RpKNOrAZV6tagbaKL5S";
+/*recaptcha_secret = "6LcBgWAsAAAAAPOCwFqU7RpKNOrAZV6tagbaKL5S";
 $recaptcha_response = $_POST['g-recaptcha-response'] ?? '';
 
 if (empty($recaptcha_response)) {
@@ -39,6 +39,7 @@ if (!$result['success'] || $result['score'] < 0.5) {
     header('Location: ../../views/backend/members/create.php');
     exit;
 }
+*/
 
 $pseudoMemb = ctrlSaisies($_POST['pseudoMemb'] ?? '');
 $prenomMemb = ctrlSaisies($_POST['prenomMemb'] ?? '');

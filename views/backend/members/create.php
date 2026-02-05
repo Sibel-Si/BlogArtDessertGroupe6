@@ -4,8 +4,7 @@ include '../../../header.php';
 $statuts = function_exists('sql_select') ? sql_select('STATUT', '*', null, null, 'libStat ASC') : [];
 ?>
 
-<!-- reCAPTCHA V3 -->
-<script src="https://www.google.com/recaptcha/api.js?render=6LcBgWAsAAAAAJXlt-QCfOoIE1-qSXXHNFCa0usb"></script>
+<!-- <script src="https://www.google.com/recaptcha/api.js?render=6LcBgWAsAAAAAJXlt-QCfOoIE1-qSXXHNFCa0usb"></script> -->
 
 <style>
 html, body {
@@ -133,7 +132,7 @@ function toggleConfirmPassword(){
 	f.type = (f.type === 'password') ? 'text' : 'password';
 }
 
-document.getElementById('memberCreateForm').addEventListener('submit', function(e){
+/*document.getElementById('memberCreateForm').addEventListener('submit', function(e){
 	e.preventDefault();
 	grecaptcha.ready(function() {
 		grecaptcha.execute('6LcBgWAsAAAAAJXlt-QCfOoIE1-qSXXHNFCa0usb', {action: 'create'})
@@ -143,6 +142,7 @@ document.getElementById('memberCreateForm').addEventListener('submit', function(
 		});
 	});
 });
+*/
 </script>
 
 <?php include '../../../footer.php'; ?>
