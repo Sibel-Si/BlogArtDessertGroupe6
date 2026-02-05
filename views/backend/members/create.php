@@ -7,6 +7,20 @@ $statuts = function_exists('sql_select') ? sql_select('STATUT', '*', null, null,
 <!-- reCAPTCHA V3 -->
 <script src="https://www.google.com/recaptcha/api.js?render=6LcBgWAsAAAAAJXlt-QCfOoIE1-qSXXHNFCa0usb"></script>
 
+<style>
+html, body {
+    height: 100%;
+}
+body {
+    display: flex;
+    flex-direction: column;
+}
+main {
+    flex: 1;
+}
+</style>
+
+<main>
 <div class="container d-flex justify-content-center mt-4">
 	<div class="w-100" style="max-width:900px;">
 		<div class="d-flex justify-content-between align-items-center mb-3">
@@ -107,6 +121,7 @@ $statuts = function_exists('sql_select') ? sql_select('STATUT', '*', null, null,
 		</div>
 	</div>
 </div>
+</main>
 
 <script>
 function togglePassword(){
