@@ -1,0 +1,173 @@
+/*  HOME макет (stripes + orange band)  */
+
+.hero-mock{
+  /* striped background like mockup */
+  background: repeating-linear-gradient(
+    90deg,
+    #3b160c 0 70px,
+    #f6f2ee 70px 140px
+  );
+  padding: 70px 0; /* height of stripes area top/bottom */
+}
+
+.hero-mock-inner{
+  width: 100%;
+  position: relative;
+  min-height: 380px;
+}
+
+/* orange center band */
+.hero-band{
+  background: #c57a2f;
+  height: 240px;
+  display: grid;
+  place-items: center;
+}
+
+/* title */
+.hero-title{
+  margin: 0;
+  text-align: center;
+  font-size: 86px;
+  line-height: 0.95;
+  color: #000;
+  font-family: "Della Respira", serif;
+}
+
+/* images blocks */
+.mock-img{
+  position: absolute;
+  width: 260px;
+  height: 260px;
+  background: #b99a6c;
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: rgba(255,255,255,0.9);
+}
+
+/* left image overlaps top & bottom stripes */
+.mock-img-left{
+  left: 80px;
+  top: -40px; /* overlap */
+}
+
+/* right image overlaps bottom stripes */
+.mock-img-right{
+  right: 80px;
+  bottom: -40px; /* overlap */
+}
+
+/* responsive */
+@media (max-width: 900px){
+  .hero-title{ font-size: 56px; }
+
+  .mock-img{
+    width: 180px;
+    height: 180px;
+  }
+
+  .mock-img-left{ left: 20px; top: -20px; }
+  .mock-img-right{ right: 20px; bottom: -20px; }
+}
+
+/* images inside mock blocks */
+.mock-img img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;     
+  display: block;
+}
+
+/*  HOME section 2 (image + description + button) */
+.home-section2{
+  background: #F6E9D2; /* кремовий як в макеті */
+  padding: 0;
+}
+
+.home-section2-inner{
+  width: min(1100px, 92vw);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  padding: 60px 0;
+  align-items: start;
+}
+
+.s2-left{
+  background: #A87D4D; /* коричневий блок */
+  min-height: 420px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.s2-left img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.s2-right{
+  position: relative;
+  min-height: 420px;
+}
+
+.s2-icon{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.s2-icon img{
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  opacity: 0.8;
+}
+
+.s2-desc{
+  background: #D9D9D9;
+  height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  box-sizing: border-box;
+}
+
+.s2-desc p{
+  margin: 0;
+  font-size: 22px;
+}
+
+.s2-btn{
+  display: inline-block;
+  margin-top: 18px;
+  padding: 12px 22px;
+  background: #E6E6E6;
+  border: 2px solid #AFAFAF;
+  border-radius: 12px;
+  color: #222;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.s2-btn:hover{
+  filter: brightness(0.96);
+}
+
+/* responsive */
+@media (max-width: 900px){
+  .home-section2-inner{
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 30px 0;
+  }
+  .s2-left, .s2-right{
+    min-height: 320px;
+  }
+
