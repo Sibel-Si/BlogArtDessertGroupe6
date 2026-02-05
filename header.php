@@ -47,10 +47,9 @@ if (session_status() === PHP_SESSION_NONE) {
     </div>
     <!--right align-->
     <div class="d-flex">
-      <form class="d-flex" role="search">
-          <input class="" type="search" placeholder="Rechercher sur le site…" name ="recherche" aria-label="Search" value ="<?php echo isset($_GET['recherche']) ? $_GET['recherche'] : '' ?>">
+      <form class="d-flex" role="search"> <!--quand on cherche une mot sur barre de recherche, ça amène vers page search avec lien article-->
+          <input class="" type="search" placeholder="Rechercher sur le site…" name ="recherche" aria-label="Search" value ="<?php echo isset($_GET['recherche']) ? $_GET['recherche'] : ''?>">
       </form>
-      <a class="btn btn-fonce m-1" href="/views/frontend/search.php" role="button">Recherche avancée</a>
       <a class="btn btn-fonce m-1" href="/views/backend/security/login.php" role="button">Login</a>
       <a class="btn btn-fonce m-1" href="/views/backend/security/signup.php" role="button">Sign up</a>
     </div>
