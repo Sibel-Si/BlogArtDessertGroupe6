@@ -45,7 +45,7 @@ $nbComments = count($comments);
                     // Optional: Check if user already liked this to change button appearance
                     $alreadyLiked = sql_select("likeart", "*", "numMemb = $numMemb AND numArt = $numArt");
                 ?>
-                <form action="<?php echo ROOT_URL . '/api/likes/create.php' ?>" method="post">
+                <form action="<?php echo ROOT_URL . '/api/likes/create_front.php' ?>" method="post">
                     <input type="hidden" name="numMemb" value="<?php echo $numMemb; ?>">
                     <input type="hidden" name="numArt" value="<?php echo $numArt; ?>">
                     <button type="submit" class="btn <?php echo !empty($alreadyLiked) ? 'btn-danger' : 'btn-outline-danger'; ?>">
