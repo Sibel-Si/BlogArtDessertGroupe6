@@ -444,23 +444,3 @@ body {
     margin-top: 50px;
 }
 
-
-
-
-
-
-/* ARTICLES (BOOTSTRAP CARDS)*/
-.home-articles {
-  background-color: #F7E6CA;
-  padding: 200px 0;
-}
-
-/* card */
-.home-articles .card{
-  background-color: #F3D9B6;
-  border: 2px solid #E7A564;
-  border-radius: 14px;
-  overflow: hidden;
-  height: 100%;
-}
-
