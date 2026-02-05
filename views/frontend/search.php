@@ -16,7 +16,7 @@ if(isset($motcle)){
     $recherFinal = sql_select("ARTICLE", "*", "libTitrArt LIKE '%$motcle%'");
 }
 
-var_dump($_SERVER);
+// var_dump($_SERVER);
 ?>
 
 <!-- <h1>Recherche Avancée</h1>
@@ -46,10 +46,11 @@ var_dump($_SERVER);
 <tbody>
     <tr>
         <td><?php 
-        // foreach (){
-        //     echo($recherFinal);
-        // }
-        var_dump($recherFinal)
+        foreach ($recherFinal as $recherche){ //affichage des recherches
+            echo($recherche)["libTitrArt"];
+            ?><br /><?php
+        }
+        // var_dump($recherFinal);
         ?></td>
     </tr>
 </tbody>
