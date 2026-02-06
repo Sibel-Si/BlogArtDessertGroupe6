@@ -1,104 +1,79 @@
 <?php
-if(!isset($_GET["numCom"])){
-    header("Location:list.php");
-    exit();
-}
-
+// EDIT COMMENT (Fixed Article)
 include '../../../header.php';
 
-$numCom = intval($_GET["numCom"]);
+// 1. Get the comment ID from URL
+$numCom = $_GET['numCom'] ?? 0;
 
-$commentaire = sql_select("comment INNER JOIN article ON comment.numArt = article.numArt INNER JOIN membre ON comment.numMemb=membre.numMemb", "*", "numCom = ".$numCom);
-$commentaire = $commentaire[0];
-// var_dump($commentaire);
-// récuparation avec session puis affichage nom prénom
+// 2. Fetch the specific comment data
+$comment_data = sql_select("COMMENT", "*", "numCom = $numCom");
+$commentaire = !empty($comment_data) ? $comment_data[0] : null;
+
+if (!$commentaire) {
+    header("Location: list.php");
+    exit;
+}
+
+// 3. Fetch the member associated with this comment
+$numMemb = $commentaire['numMemb'];
+$membre_data = sql_select("MEMBRE", "*", "numMemb = $numMemb");
+$membre = !empty($membre_data) ? $membre_data[0] : null;
+
+$pseudoMemb = $membre["pseudoMemb"] ?? "Pseudo inconnu";
+$prenomMemb = $membre["prenomMemb"] ?? "Prénom inconnu";
+$nomMemb    = $membre["nomMemb"]    ?? "Nom inconnu";
+
+// 4. Fetch articles to display the title
+$articles = sql_select("ARTICLE", "*");
 ?>
+
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <br />
-            <h1>Modération Commentaire : Suppression Logique</h1>
+            <h1>Modification du Commentaire</h1>
         </div>
         <div class="col-md-12">
-            <!-- Form to create a new statut -->
-            <form action="<?php echo ROOT_URL . '/api/comments/delete.php' ?>" method="get">
-                <div class="form-group">
-                    <label for="numArt">Numéro article</label>
-                    <input id="numArt" name="numArt" class="form-control" type ="text" value ="<?php echo($commentaire["numArt"]);?>" disabled>
-                </div>
-                <br />
-                <div class="form-group">
-                    <label for="numCom">Numéro commentaire</label>
-                    <input id="numCom" name="numCom" class="form-control" type="text" value="<?php echo($commentaire["numCom"]);?>" disabled>
+            <form action="<?php echo ROOT_URL . '/api/comments/delete.php' ?>" method="post">
+                
+                <input type="hidden" name="numCom" value="<?php echo($numCom); ?>">
+                <input type="hidden" name="numMemb" value="<?php echo($numMemb); ?>">
+                <input type="hidden" name="numArt" value="<?php echo($commentaire['numArt']); ?>">
 
+                <div class="form-group">
+                    <label for="pseudoMemb">Pseudo</label>
+                    <input id="pseudoMemb" class="form-control" type="text" value="<?php echo($pseudoMemb);?>" disabled>
                 </div>
                 <br />
                 <div class="form-group">
-                    <label for="pseudoMemb" >Pseudo</label>
-                    <input id="pseudoMemb" name="pseudoMemb" class="form-control" type="text" value="<?php echo($commentaire["pseudoMemb"]);?>" disabled>
+                    <label for="nomMemb">Nom</label>
+                    <input id="nomMemb" name="nomMemb" class="form-control" type="text" value ="<?php echo($nomMemb);?>" disabled>
                 </div>
                 <br />
                 <div class="form-group">
-                    <label for="libStat" >Titre Article</label>
-                    <input id="libStat" name="libStat" class="form-control" type="text" value="<?php echo $commentaire["libTitrArt"] ?>" disabled>
+                    <label for="prenomMemb">Prénom</label>
+                    <input id="prenomMemb" name="prenomMemb" class="form-control" type="text" value ="<?php echo($prenomMemb);?>" disabled>
                 </div>
                 <br />
                 <div class="form-group">
-                    <label for="libStat">Accroche Paragraphe</label>
-                    <input id="libStat" name="libStat" class="form-control" type="text" value="<?php echo $commentaire["libAccrochArt"] ?>" disabled>
+                    <label for="numArt_display">Article</label>
+                    <select id="numArt_display" class="form-control" disabled>
+                        <?php
+                        foreach($articles as $article){
+                            $selected = ($article['numArt'] == $commentaire['numArt']) ? 'selected' : '';
+                            echo('<option value="' . $article['numArt'] . '" ' . $selected . '>' . $article['libTitrArt'] . '</option>');
+                        }
+                        ?>
+                    </select>
                 </div>
                 <br />
                 <div class="form-group">
-                    <label for="dtCreaCom">Date de Création Commentaire</label>
-                    <input id="dtCreaCom" name="dtCreaCom" class="form-control" type="text" value ="<?php echo $commentaire["dtCreaCom"] ?>" disabled>
+                    <label for="libCom">Commentaire</label>
+                    <textarea id="libCom" name="libCom" class="form-control" rows="5" readonly><?php echo($commentaire['libCom']); ?></textarea>
                 </div>
-                <br />
-                <div class="form-group">
-                    <label for="libStat" class = "disabled">Date de Modération Commentaire</label>
-                    <input id="libStat" name="libStat" class="form-control" type="text" value ="<?php echo($commentaire["dtModCom"]);?>" disabled>
-                </div>
-                <br />
-                <h2>Commentaire</h2>
-                <div class="form-group">
-                    <label for="libStat" class = "disabled">Commentaire à Valider/Validé</label>
-                    <textarea id="libStat" name="libStat" class="form-control"><?php echo($commentaire["libCom"]);?></textarea>
-                </div>
-                <label class="form-label mt-4">Je valide le commentaire du membre?</label>
-                <div class="d-flex gap-3">
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="attModOK" value="oui" required>
-                        <label class="form-check-label">Oui</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="attModOK" value="non" required>
-                        <label class="form-check-label">Non</label>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="notifComKOAff" class = "disabled">Si non, en écrire les raisons : </label>
-                    <textarea id="notifComKOAff" name="notifComKOAff" class="form-control"></textarea>
-                </div>
-                <label class="form-label mt-4">Je souhaite que le commentaire ne soit plus affiché?</label>
-                <div class="d-flex gap-3">
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="libCom" value="oui" required>
-                        <label class="form-check-label">Oui</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="libCom" value="non" required>
-                        <label class="form-check-label">Non</label>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="dtCreaCom">Date de Suppression Commentaire</label>
-                    <input id="dtCreaCom" name="dtCreaCom" class="form-control" type="text" value ="<?php echo($commentaire["dtDelLogCom"]); ?>" disabled>
-                </div>
-                <br />
-                <div class="form-group mt-2">
-                    <button type="submit" class="btn btn-clair">List</button>
-                </div>
-                <div class="form-group mt-2">
-                    <button href ="views/backend/comments/list.php" type="submit" class="btn btn-clair">Confirmer</button>
+
+                <div class="form-group mt-3">
+                    <button type="submit" class="btn btn-fonce">Delete</button>
+                    <a href="list.php" class="btn btn-moyen">List</a>
                 </div>
             </form>
         </div>
@@ -106,5 +81,5 @@ $commentaire = $commentaire[0];
 </div>
 
 <?php
-include '../../../footer.php'; // contains the footer
+include '../../../footer.php'; 
 ?>

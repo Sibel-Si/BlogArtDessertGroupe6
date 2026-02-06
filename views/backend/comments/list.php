@@ -83,7 +83,7 @@ function getMemberPseudo($id, $membres) {
                             <td><?php echo getMemberPseudo($commentaire['numMemb'], $membres); ?></td> 
                             <td><?php echo($commentaire['dtModCom']); ?></td>
                             <td><?php echo($commentaire['libCom']); ?></td>
-                            <td><?php if ($commentaire['attModOK']==0){ echo("Publié"); } 
+                            <td><?php if ($commentaire['attModOK']==1){ echo("Publié"); } 
                             else { echo("Suppression Logique"); } ?></td>
                             <td><?php echo($commentaire['notifComKOAff']); ?></td>
                             <td>
@@ -111,11 +111,11 @@ function getMemberPseudo($id, $membres) {
                             <td><?php echo getMemberPseudo($commentaire['numMemb'], $membres); ?></td> 
                             <td><?php echo($commentaire['dtDelLogCom']); ?></td>
                             <td><?php echo($commentaire['libCom']); ?></td>
-                            <td><?php if ($commentaire['attModOK']==0){ echo("Publié"); } 
+                            <td><?php if ($commentaire['attModOK']==1){ echo("Publié"); } 
                             else { echo("Suppression Logique"); } ?></td>
                             <td><?php echo($commentaire['notifComKOAff']); ?></td>
                             <td>
-                                <a href="edit.php?numCom=<?php echo($commentaire['numCom']); ?>" class="btn btn-moyen">Edit</a>
+                                <a href="control.php?numCom=<?php echo($commentaire['numCom']); ?>" class="btn btn-moyen">Edit Control</a>
                             </td>
                         </tr>
                     <?php } ?>
@@ -139,7 +139,7 @@ function getMemberPseudo($id, $membres) {
                             <td><?php echo getMemberPseudo($commentaire['numMemb'], $membres); ?></td> 
                             <td><?php echo($commentaire['dtDelLogCom']); ?></td>
                             <td><?php echo($commentaire['libCom']); ?></td>
-                            <td><?php if ($commentaire['attModOK']==0){ echo("Publié"); } 
+                            <td><?php if ($commentaire['attModOK']==1){ echo("Publié"); } 
                             else { echo("Suppression Logique"); } ?></td>
                             <td><?php echo($commentaire['notifComKOAff']); ?></td>
                             <td>
