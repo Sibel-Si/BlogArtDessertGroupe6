@@ -10,7 +10,7 @@ $numCom = intval($_GET["numCom"]);
 
 $commentaire = sql_select("comment INNER JOIN article ON comment.numArt = article.numArt INNER JOIN membre ON comment.numMemb=membre.numMemb", "*", "numCom = ".$numCom);
 $commentaire = $commentaire[0];
-var_dump($commentaire);
+// var_dump($commentaire);
 
 // récuparation avec session  puis affichage nom prénom
 ?>
@@ -62,34 +62,34 @@ var_dump($commentaire);
                 <h2>Commentaire</h2>
                 <div class="form-group">
                     <label for="libCom" class = "disabled">Commentaire à Valider/Validé</label>
-                    <textarea id="libCom" name="libCom" class="form-control"><?php echo($commentaire["libCom"]); ?></textarea>
+                    <textarea id="libCom" name="libCom" class="form-control" disabled><?php echo($commentaire["libCom"]);?></textarea>
                 </div>
                 <label class="form-label mt-4">Je valide le commentaire du membre?</label>
                 <div class="d-flex gap-3">
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="validate" value="oui" required>
+                        <input class="form-check-input" type="radio" name="validate1" value="oui" required>
                         <label class="form-check-label">Oui</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="validate" value="non" required>
+                        <input class="form-check-input" type="radio" name="validate1" value="non" required>
                         <label class="form-check-label">Non</label>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="libStat" class = "disabled">Si non, en écrire les raisons : </label>
-                    <textarea id="libStat" name="libStat" class="form-control"></textarea>
+                    <label for="notifComKOAff" class = "disabled">Si non, en écrire les raisons : </label>
+                    <textarea id="notifComKOAff" name="notifComKOAff" class="form-control"></textarea>
                 </div>
-                <label class="form-label mt-4">Je souhaite que le commentaire ne soit plus affiché?</label>
+                <!-- <label class="form-label mt-4">Je souhaite que le commentaire ne soit plus affiché?</label>
                 <div class="d-flex gap-3">
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="validate" value="oui" required>
+                        <input class="form-check-input" type="radio" name="validate2" value="oui" required>
                         <label class="form-check-label">Oui</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="validate" value="non" required>
+                        <input class="form-check-input" type="radio" name="validate2" value="non" required>
                         <label class="form-check-label">Non</label>
                     </div>
-                </div>
+                </div> -->
                 <div class="form-group mt-2">
                     <button type="submit" class="btn btn-clair" href = "/views/backend/comments/list.php">List</button>
                 </div>

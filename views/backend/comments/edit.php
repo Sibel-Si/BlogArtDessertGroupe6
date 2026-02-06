@@ -56,7 +56,7 @@ $commentaire = $commentaire[0];
                 <h2>Commentaire</h2>
                 <div class="form-group">
                     <label for="libCom" class = "disabled">Commentaire à Valider</label>
-                    <textarea id="libCom" name="libCom" class="form-control"><?php echo($commentaire["libCom"]); ?></textarea>
+                    <textarea id="libCom" name="libCom" class="form-control" disabled><?php echo($commentaire["libCom"]); ?></textarea>
                 </div>
                 <label class="form-label mt-4">Je valide le commentaire du membre?</label>
                 <div class="d-flex gap-3">

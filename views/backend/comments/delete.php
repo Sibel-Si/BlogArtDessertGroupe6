@@ -81,11 +81,11 @@ $commentaire = $commentaire[0];
                 <label class="form-label mt-4">Je souhaite que le commentaire ne soit plus affiché?</label>
                 <div class="d-flex gap-3">
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="afficheoui" value="oui" required>
+                        <input class="form-check-input" type="radio" name="libCom" value="oui" required>
                         <label class="form-check-label">Oui</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="affichenon" value="non" required>
+                        <input class="form-check-input" type="radio" name="libCom" value="non" required>
                         <label class="form-check-label">Non</label>
                     </div>
                 </div>
@@ -98,7 +98,7 @@ $commentaire = $commentaire[0];
                     <button type="submit" class="btn btn-clair">List</button>
                 </div>
                 <div class="form-group mt-2">
-                    <button type="submit" class="btn btn-clair">Confirmer</button>
+                    <button href ="views/backend/comments/list.php" type="submit" class="btn btn-clair">Confirmer</button>
                 </div>
             </form>
         </div>

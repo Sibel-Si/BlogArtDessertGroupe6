@@ -36,8 +36,8 @@ $infosMembArt = $infosMembArt[0];
                     <?php 
                     foreach($commentairesattente as $commentaire){ ?>
                         <tr>
-                            <td><?php echo($infosMembArt["libTitrArt"]); ?></td> <!--faire en sorte de mettre le titre des articles-->
-                            <td><?php echo($infosMembArt["pseudoMemb"]); ?></td> <!-- idem pour pseudo-->
+                            <td><?php echo($infosMembArt["libTitrArt"]); ?></td>
+                            <td><?php echo($infosMembArt["pseudoMemb"]); ?></td>
                             <td><?php echo($commentaire['dtCreaCom']); ?></td>
                             <td><?php echo($commentaire['libCom']); ?></td>
                             <td>
@@ -61,10 +61,10 @@ $infosMembArt = $infosMembArt[0];
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach($commentaireOK as $commentaire){ ?>
+                    <?php foreach($commentaireOK as $commentaire){ ?> <!--modification place commentaire validé dans ce tableau-->
                         <tr>
-                            <td><?php echo($infosMembArt["pseudoMemb"]); ?></td> <!--faire en sorte de mettre le titre des articles-->
-                            <td><?php echo($commentaire["dtModCom"]); ?></td> <!-- idem pour pseudo-->
+                            <td><?php echo($infosMembArt["pseudoMemb"]); ?></td>
+                            <td><?php echo($commentaire["dtModCom"]); ?></td>
                             <td><?php echo($commentaire['libCom']); ?></td>
                             <td><?php echo($commentaire['attModOK']); ?></td>
                             <td><?php echo($commentaire['notifComKOAff']); ?></td>
