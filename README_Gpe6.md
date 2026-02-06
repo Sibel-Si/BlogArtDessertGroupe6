@@ -28,6 +28,11 @@ Login Membre:
     Pseudo: Membre
     MDP: Membre0000
 
+Login Comptes extra:
+
+    Pseudo: testPseudo, testPseudo2
+    MDP: Test1234
+
 Etat de la base de donnée:
 
     Des Membres, Statut, Articles, Mots-cles, Thématiques, Commentaires, Likes/Unlike ont été créés pour être supprimés et modifiés.
@@ -42,4 +47,4 @@ Etat des lieux du projet:
                 views\frontend\movements.php
                 views\frontend\original.php    existent mais ne sont pas accessible via le site, et ne contiennent pas les articles.
 
-Dernier push GitHub 16h30
+Dernier push GitHub 16h32
