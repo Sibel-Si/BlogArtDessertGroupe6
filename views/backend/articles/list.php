@@ -2,6 +2,8 @@
 
 
 include '../../../header.php'; // contains the header and call to config.php
+check_page_access([1, 2]); 
+
 
 //Load all aticles
 $articles = sql_select("ARTICLE", "*");

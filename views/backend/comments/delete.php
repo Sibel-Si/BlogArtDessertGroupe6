@@ -1,6 +1,8 @@
 <?php
-// EDIT COMMENT (Fixed Article)
+// delete
 include '../../../header.php';
+check_page_access([1]); 
+
 
 // 1. Get the comment ID from URL
 $numCom = $_GET['numCom'] ?? 0;

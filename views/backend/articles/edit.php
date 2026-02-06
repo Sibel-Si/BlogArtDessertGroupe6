@@ -2,6 +2,8 @@
 
 
 include '../../../header.php';
+check_page_access([1, 2]); 
+
 
 // Get the article ID from URL parameter
 $numArt = isset($_GET['numArt']) ? (int)$_GET['numArt'] : 0;

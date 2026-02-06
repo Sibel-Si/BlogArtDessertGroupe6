@@ -5,8 +5,14 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/functions/ctrlSaisies.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/functions/query/connect.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/config.php';
 
+// Only allow Admins (level 1) to access this specific API
+check_api_access([1]);
+
 
 $numM = isset($_POST['numM']) ? (int)$_POST['numM'] : 0;
+if(empty($numM)){
+    header('Location: ../../views/backend/members/list.php');
+}
 if ($numM <= 0) {
     $_SESSION['error_message'] = "Identifiant membre invalide.";
     header('Location: ../../views/backend/members/list.php');
@@ -55,6 +61,16 @@ if (!$member || !isset($member[0])) {
     exit();
 }
 $member = $member[0];
+
+// Dependency Checks
+$comCount = sql_select('COMMENT', 'COUNT(*) as count', "numMemb = $numM")[0]['count'] ?? 0;
+$likeCount = sql_select('LIKEART', 'COUNT(*) as count', "numMemb = $numM")[0]['count'] ?? 0;
+
+if ( $comCount > 0 || $likeCount > 0) {
+    $_SESSION['error_message'] = "Impossible de supprimer ce membre : il possède encore des commentaires ($comCount) ou des likes ($likeCount).";
+    header('Location: ../../views/backend/members/delete.php?numM=' . $numM);
+    exit();
+}
 
 try {
     global $DB; // Tell PHP to use the global database variable

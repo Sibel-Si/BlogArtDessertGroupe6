@@ -4,6 +4,9 @@ session_start();
 require_once $_SERVER['DOCUMENT_ROOT'] . '/functions/ctrlSaisies.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/config.php';
 
+// Only allow Admins (level 1) to access this specific API
+check_api_access([1]);
+
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     $_SESSION['error_message'] = 'Méthode non autorisée.';
     header('Location: ../../views/backend/members/create.php');
@@ -51,6 +54,9 @@ $eMailMemb = ctrlSaisies($_POST['eMailMemb'] ?? '');
 $confirmEmailMemb = ctrlSaisies($_POST['confirmEmailMemb'] ?? '');
 $accordMemb = isset($_POST['accordMemb']) ? (int)$_POST['accordMemb'] : 0;
 $numStat = isset($_POST['numStat']) ? (int)$_POST['numStat'] : null;
+if(empty($numStat)){
+    header('Location: ../../views/backend/members/list.php');
+}
 
 $errors = [];
 

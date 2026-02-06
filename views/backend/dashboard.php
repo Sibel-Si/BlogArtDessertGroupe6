@@ -1,5 +1,7 @@
 <?php
 include '../../header.php';
+check_page_access([1, 2]); 
+
 ?>
 
 <!-- Bootstrap admin dashboard template -->

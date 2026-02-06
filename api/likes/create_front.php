@@ -2,6 +2,7 @@
 require_once $_SERVER['DOCUMENT_ROOT'] . '/config.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/functions/global.inc.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/functions/ctrlSaisies.php';
+check_login_and_redirect();
 
 // Protect the API: only logged-in users
 if (session_status() === PHP_SESSION_NONE) session_start();
@@ -12,6 +13,8 @@ if (!isset($_SESSION['id_user'])) {
 
 $numMemb = (int)($_POST['numMemb'] ?? 0);
 $numArt  = (int)($_POST['numArt'] ?? 0);
+
+
 
 if ($numMemb > 0 && $numArt > 0) {
     // 1. Fetch the record

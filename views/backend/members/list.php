@@ -1,6 +1,10 @@
 <?php
 
 include '../../../header.php'; // contains the header and call to config.php
+check_page_access([1, 2]); 
+
+
+
 ?>
 <div class="card">
     <div class="card-body">

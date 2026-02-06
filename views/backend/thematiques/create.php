@@ -1,6 +1,8 @@
 <?php
 
 include '../../../header.php';
+check_page_access([1, 2]); 
+
 ?>
 
 <div class="container">

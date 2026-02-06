@@ -1,7 +1,9 @@
 <?php
 
-//CREATE NON AFFICHE
+//CREATE
 include '../../../header.php';
+check_page_access([1, 2]); 
+
 
 $numMemb = $_SESSION['id_user'] ?? 0;
 

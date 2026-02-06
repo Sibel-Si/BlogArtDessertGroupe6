@@ -4,6 +4,12 @@
 require_once $_SERVER['DOCUMENT_ROOT'] . '/config.php';
 require_once '../../functions/ctrlSaisies.php';
 
+// Only allow Admins and mods(level 1 & 2) to access this specific API
+check_api_access([1,2]);
+
+
+
+
 $articleData = [
     'libTitrArt' => ctrlSaisies($_POST['libTitrArt'] ?? ''),
     'dtCreaArt' => ctrlSaisies($_POST['dtCreaArt'] ?? ''),
@@ -19,6 +25,10 @@ $articleData = [
     'numMotCle' => $_POST['numMotCle'] ?? [],
     'urlPhotArt' => '',
 ];
+$test = $articleData["libTitrArt"];
+if(empty($test)){
+    header('Location: ../../views/backend/articles/list.php');
+}
 
 require_once '../../functions/upload_image.php';
 

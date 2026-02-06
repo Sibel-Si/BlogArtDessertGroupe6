@@ -9,6 +9,8 @@
 // 4) дає кнопку "Confirmer Delete ?"
 
 include '../../../header.php'; // підключаємо header (bootstrap, меню, початок HTML)
+check_page_access([1, 2]); 
+
 
 // Перевіряємо: чи в URL є обидва параметри
 // delete.php?numMemb=2&numArt=5

@@ -1,6 +1,8 @@
 <?php
 
 include '../../../header.php';
+check_page_access([1]); 
+
 
 if (!isset($_GET['numM'])) {
     $_SESSION['error_message'] = "ID du membre manquant.";

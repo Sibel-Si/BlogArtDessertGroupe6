@@ -1,6 +1,8 @@
 <?php
 
 include '../../../header.php';
+check_page_access([1, 2]); 
+
 ?>
 
 <!-- Bootstrap form to create a new statut -->

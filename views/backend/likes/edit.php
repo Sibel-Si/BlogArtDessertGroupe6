@@ -8,6 +8,8 @@
 // 3) показуємо форму з radio (Like/Unlike)
 
 include '../../../header.php'; // Підключаємо header (bootstrap, меню, початок HTML)
+check_page_access([1, 2]); 
+
 
 // Перевіряємо, чи в URL є обидва параметри:
 // edit.php?numMemb=2&numArt=5

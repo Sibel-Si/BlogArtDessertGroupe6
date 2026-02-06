@@ -1,8 +1,6 @@
 <?php
 require_once '../../../header.php'; // Includes security.php
-if (!IS_LOGGED_IN){
-    exit;
-}
+check_login_and_redirect();
 
 // Get the article ID from the URL
 $numArt = isset($_GET['numArt']) ? (int)$_GET['numArt'] : 0;

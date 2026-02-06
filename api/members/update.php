@@ -3,6 +3,9 @@
 require_once $_SERVER['DOCUMENT_ROOT'] . '/functions/ctrlSaisies.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/config.php';
 
+// Only allow Admins (level 1) to access this specific API
+check_api_access([1]);
+
 // Check if member ID is provided
 if (!isset($_POST['numM'])) {
     $_SESSION['error_message'] = "ID du membre manquant.";

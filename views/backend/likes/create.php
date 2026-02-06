@@ -1,6 +1,8 @@
 <?php
 
 include '../../../header.php';
+check_page_access([1, 2]); 
+
 
 // 1) Беремо всіх членів для першого select
 $membres = sql_select("membre", "*", "1=1");

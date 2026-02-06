@@ -2,6 +2,8 @@
 
 
 include '../../../header.php';
+check_page_access([1, 2]); 
+
 
 if(isset($_GET['numStat'])){
     $numStat = $_GET['numStat'];

@@ -1,5 +1,7 @@
 <?php
 include '../../../header.php';
+check_page_access([1]); 
+
 
 $statuts = function_exists('sql_select') ? sql_select('STATUT', '*', null, null, 'libStat ASC') : [];
 ?>

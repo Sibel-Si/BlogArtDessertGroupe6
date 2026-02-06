@@ -1,5 +1,7 @@
 <?php
 include '../../../header.php';
+check_page_access([1, 2]); 
+
 
 if(isset($_SESSION['success_message'])) {
     echo '<div class="container mt-3"><div class="alert alert-success">'.$_SESSION['success_message'].'</div></div>';
@@ -90,8 +92,13 @@ main { flex: 1; }
 
                 <div class="form-group text-right mt-4">
                     <a href="list.php" class="btn btn-moyen">List</a>
-                    <button type="submit" class="btn btn-fonce">Confirmer Delete ?</button>
-                </div>
+                    <?php if(!$isBlocked): ?>
+                <button type="submit" class="btn btn-danger" onclick="return confirm('Confirmer la suppression définitive de ce membre ?');">
+                    Supprimer le membre
+                </button>
+            <?php else: ?>
+                <button type="button" class="btn btn-danger" disabled>Suppression bloquée</button>
+            <?php endif; ?>                </div>
 
             </form>
 

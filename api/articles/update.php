@@ -4,10 +4,13 @@
 require_once $_SERVER['DOCUMENT_ROOT'] . '/config.php';
 require_once '../../functions/ctrlSaisies.php';
 
+// Only allow Admins and mods(level 1 & 2) to access this specific API
+check_api_access([1,2]);
+
 // Expecting POST with at least numArt
 $numArt = ctrlSaisies($_POST['numArt'] ?? '');
 if(empty($numArt)){
-    die('Missing article id');
+    header('Location: ../../views/backend/articles/list.php');
 }
 
 // Fetch current article to get old image filename

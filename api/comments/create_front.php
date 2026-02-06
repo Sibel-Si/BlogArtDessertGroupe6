@@ -3,10 +3,14 @@
 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/config.php';
 require_once '../../functions/ctrlSaisies.php';
+check_login_and_redirect();
 
 $numArt= ($_POST['numArt']);
 $numMemb= ($_POST['numMemb']);
 $libCom= ($_POST['libCom']);
+if(empty($numArt)){
+    header('Location: /index.php');
+}
 
 
 sql_insert('COMMENT', "libCom, numArt, numMemb", " '$libCom', '$numArt', '$numMemb'");

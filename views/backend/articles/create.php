@@ -2,6 +2,8 @@
 
 
 include '../../../header.php';
+check_page_access([1, 2]); 
+
 
 $articles = sql_select("ARTICLE", "*");
 $themes = sql_select("THEMATIQUE", "*");

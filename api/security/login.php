@@ -15,6 +15,7 @@ require_once __DIR__ . '/../../functions/ctrlSaisies.php';
 
 $pseudo = ctrlSaisies($_POST['pseudoMemb']);
 $pass   = ctrlSaisies($_POST['passMemb']);
+
 //$captchaRes = $_POST['g-recaptcha-response'];
 
 if ($pseudo === '' || $pass === '') {
@@ -82,7 +83,7 @@ $_SESSION['pseudoMemb'] = $membre[0]['pseudoMemb'];
 $_SESSION['numStat'] = (int)$membre[0]['numStat'];
 
 header('Location: /');
-exit;
+exit;?>
  <main class="content-grid-container">
         <div class="bg-illustration muffin">🧁</div>
         <div class="bg-illustration pain">🍞</div>
