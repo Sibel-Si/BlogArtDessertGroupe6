@@ -43,8 +43,17 @@ if (!empty($motsClesArt)) {
     $motscles = [];
 }
 
-$likes = sql_select("LIKEART", "*", "numArt = $numArt");
+$likes = sql_select("LIKEART", "*", "numArt = $numArt AND likeA = 1");
 $nbLikes = count($likes);
+
+// Check if the current user has liked this article
+$userHasLiked = false;
+if ($numMemb > 0) {
+    $checkLike = sql_select("LIKEART", "likeA", "numArt = $numArt AND numMemb = $numMemb");
+    // Extract the value (handling potential array return)
+    $status = !empty($checkLike) ? (isset($checkLike[0]['likeA']) ? $checkLike[0]['likeA'] : $checkLike['likeA']) : 0;
+    $userHasLiked = ((int)$status === 1);
+}
 
 $comments = sql_select("COMMENT", "*", "numArt = $numArt AND attModOK = 1");
 $nbComments = count($comments);
@@ -111,10 +120,10 @@ $nbComments = count($comments);
 
         <?php if (IS_LOGGED_IN): ?>
             <div class="like-section mt-4 mb-4">
-                <form action="<?php echo ROOT_URL . '/api/likes/create.php' ?>" method="post">
+                <form action="<?php echo ROOT_URL . '/api/likes/create_front.php' ?>" method="post">
                     <input type="hidden" name="numMemb" value="<?php echo $numMemb; ?>">
                     <input type="hidden" name="numArt" value="<?php echo $numArt; ?>">
-                    <button type="submit" class="btn btn-fonce">❤ Like</button>
+                    <button type="submit" class="btn <?php echo $userHasLiked ? 'btn-danger' : 'btn-fonce'; ?>">❤ <?php echo $userHasLiked ? 'Unliker' : 'Liker'; ?></button>
                 </form>
             </div>
 
