@@ -8,12 +8,29 @@ include '../../../header.php'; // contains the header and call to config.php
 $commentairesattente = sql_select('COMMENT', "*", 'attModOK = 0 AND delLogiq = 0');
 $commentaireOK = sql_select('COMMENT', "*", 'attModOK = 1 AND delLogiq = 0');
 $commentaireSupLog = sql_select('COMMENT', "*", 'delLogiq = 1');
-$infosMembArt = sql_select("comment INNER JOIN article ON article.numArt = comment.numArt INNER JOIN membre ON comment.numMemb=membre.numMemb", "*");
-$infosMembArt = $infosMembArt[0];
 
+//$infosMembArt = sql_select("comment INNER JOIN article ON article.numArt = comment.numArt INNER JOIN membre ON comment.numMemb=membre.numMemb", "*");
+//$infosMembArt = $infosMembArt[0];
 //SELECT * FROM article INNER JOIN membre ON article.numMemb = membre.numMemb;
 
+$articles = sql_select('ARTICLE', "numArt, LibTitrArt" );
+$membres = sql_select('MEMBRE', "*" );
 
+// Helper to find Article Title by ID
+function getArticleTitle($id, $articles) {
+    foreach ($articles as $a) {
+        if ($a['numArt'] == $id) return $a['LibTitrArt'];
+    }
+    return "Article inconnu";
+}
+
+// Helper to find Member Pseudo by ID
+function getMemberPseudo($id, $membres) {
+    foreach ($membres as $m) {
+        if ($m['numMemb'] == $id) return $m['pseudoMemb'];
+    }
+    return "Anonyme";
+}
 ?>
 
 <!-- Bootstrap default layout to display all statuts in foreach -->
@@ -34,10 +51,10 @@ $infosMembArt = $infosMembArt[0];
                 </thead>
                 <tbody>
                     <?php 
-                    foreach($commentairesattente as $commentaire){ ?>
+                    foreach($commentairesattente as $commentaire){?>
                         <tr>
-                            <td><?php echo($infosMembArt["libTitrArt"]); ?></td>
-                            <td><?php echo($infosMembArt["pseudoMemb"]); ?></td>
+                            <td><?php echo getArticleTitle($commentaire['numArt'], $articles); ?></td>
+                            <td><?php echo getMemberPseudo($commentaire['numMemb'], $membres); ?></td> 
                             <td><?php echo($commentaire['dtCreaCom']); ?></td>
                             <td><?php echo($commentaire['libCom']); ?></td>
                             <td>
@@ -63,11 +80,11 @@ $infosMembArt = $infosMembArt[0];
                 <tbody>
                     <?php foreach($commentaireOK as $commentaire){ ?> <!--modification place commentaire validé dans ce tableau-->
                         <tr>
-                            <td><?php echo($infosMembArt["pseudoMemb"]); ?></td>
-                            <td><?php echo($commentaire["dtModCom"]); ?></td>
+                            <td><?php echo getMemberPseudo($commentaire['numMemb'], $membres); ?></td> 
+                            <td><?php echo($commentaire['dtModCom']); ?></td>
                             <td><?php echo($commentaire['libCom']); ?></td>
                             <td><?php echo($commentaire['attModOK']); ?></td>
-                            <td><?php echo($commentaire['notifComKOAff']); ?></td>
+                            <td><?php echo($commentaire['attModOK']); ?></td>
                             <td>
                                 <a href="edit.php?numCom=<?php echo($commentaire['numCom']); ?>" class="btn btn-clair">Edit</a>
                             </td>
@@ -90,11 +107,10 @@ $infosMembArt = $infosMembArt[0];
                 <tbody>
                     <?php foreach($commentaireSupLog as $commentaire){ ?>
                         <tr>
-                            <td><?php echo($infosMembArt["pseudoMemb"]); ?></td> <!--faire en sorte de mettre le titre des articles-->
-                            <td><?php echo($commentaire["dtDelLogCom"]); ?></td> <!-- idem pour pseudo-->
+                            <td><?php echo getArticleTitle($commentaire['numArt'], $articles); ?></td>
+                            <td><?php echo getMemberPseudo($commentaire['numMemb'], $membres); ?></td> 
+                            <td><?php echo($commentaire['dtCreaCom']); ?></td>
                             <td><?php echo($commentaire['libCom']); ?></td>
-                            <td><?php echo($commentaire['delLogiq']); ?></td>
-                            <td><?php echo($commentaire['notifComKOAff']); ?></td>
                             <td>
                                 <a href="edit.php?numCom=<?php echo($commentaire['numCom']); ?>" class="btn btn-moyen">Edit</a>
                             </td>

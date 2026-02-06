@@ -4,12 +4,13 @@
 require_once $_SERVER['DOCUMENT_ROOT'] . '/config.php';
 require_once '../../functions/ctrlSaisies.php';
 
-$dtCreaCom = ($_GET['dtCreaCom']);
+$numArt= ($_POST['numArt']);
+$numMemb= ($_POST['numMemb']);
+$libCom= ($_POST['libCom']);
 
 
+sql_insert('COMMENT', "libCom, numArt, numMemb", " '$libCom', '$numArt', '$numMemb'");
 
-
-sql_create('COMMENT', "numCom = $dtCreaCom");
-
-
+// Redirect back to the list
 header('Location: ../../views/backend/comments/list.php');
+exit;
