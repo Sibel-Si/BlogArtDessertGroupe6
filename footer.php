@@ -35,9 +35,9 @@
 	<div class="col">
 	<h5>Plan du Site</h5>
 	<ul class="nav flex-column">
-		<li class="nav-item mb-2"><a href="/views/frontend/events.php" class="nav-link p-0 hyperliens">Evénements</a></li>
-		<li class="nav-item mb-2"><a href="/views/frontend/actors.php" class="nav-link p-0 hyperliens">Acteurs</a></li>
-		<li class="nav-item mb-2"><a href="/views/frontend/original.php" class="nav-link p-0 hyperliens">Insolite</a></li>
+		<li class="nav-item mb-2"><a href="/views/frontend/search.php" class="nav-link p-0 hyperliens">Rechercher</a></li>
+		<li class="nav-item mb-2"><a href="/views/frontend/rgpd/cgu.php" class="nav-link p-0 hyperliens">CGUs</a></li>
+		<li class="nav-item mb-2"><a href="/views/frontend/rgpd/rgpd.php" class="nav-link p-0 hyperliens">RGPD</a></li>
 	</ul>
 	</div>
 
