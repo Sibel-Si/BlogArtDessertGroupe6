@@ -36,8 +36,8 @@ if (isset($member['numStat'])) {
 $dtCreation = isset($member['dtCreaMemb']) ? date('d/m/Y H:i:s', strtotime($member['dtCreaMemb'])) : '—';
 ?>
 
-<script src="https://www.google.com/recaptcha/api.js?render=6LcBgWAsAAAAAJXlt-QCfOoIE1-qSXXHNFCa0usb"></script>
-
+<!--<script src="https://www.google.com/recaptcha/api.js?render=6LcBgWAsAAAAAJXlt-QCfOoIE1-qSXXHNFCa0usb"></script>
+-->
 <style>
 html, body { height: 100%; }
 body { display: flex; flex-direction: column; }
@@ -52,7 +52,7 @@ main { flex: 1; }
 
             <form id="deleteForm" method="POST" action="<?php echo defined('ROOT_URL') ? ROOT_URL . '/api/members/delete.php' : '../../../api/members/delete.php'; ?>">
                 <input type="hidden" name="numM" value="<?php echo htmlspecialchars($member['numMemb']); ?>">
-                <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response">
+                <!--<input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response">-->
 
                 <div class="form-group text-right">
                     <label class="font-weight-bold d-block">Numéro</label>
@@ -107,7 +107,7 @@ main { flex: 1; }
 </div>
 </main>
 
-<script>
+<!--<script>
 document.getElementById('deleteForm').addEventListener('submit', function(e){
     e.preventDefault();
     grecaptcha.ready(function() {
@@ -118,6 +118,6 @@ document.getElementById('deleteForm').addEventListener('submit', function(e){
         });
     });
 });
-</script>
+</script>-->
 
 <?php include '../../../footer.php'; ?>

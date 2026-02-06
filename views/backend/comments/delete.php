@@ -74,7 +74,7 @@ $articles = sql_select("ARTICLE", "*");
                 </div>
 
                 <div class="form-group mt-3">
-                    <button type="submit" class="btn btn-fonce">Delete</button>
+                    <button type="submit" class="btn btn-fonce" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce commentaire ?');">Delete</button>
                     <a href="list.php" class="btn btn-moyen">List</a>
                 </div>
             </form>
