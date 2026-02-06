@@ -1,6 +1,8 @@
 <?php
 require_once '../../../header.php'; // Includes security.php
-check_access(); // Ensure only logged-in users can reach this page
+if (!IS_LOGGED_IN){
+    exit;
+}
 
 // Get the article ID from the URL
 $numArt = isset($_GET['numArt']) ? (int)$_GET['numArt'] : 0;
@@ -13,14 +15,14 @@ if ($numArt <= 0) {
 
 // Optional: Fetch article title to show the user what they are commenting on
 $article = sql_select("ARTICLE", "libTitrArt", "numArt = $numArt");
-$title = !empty($article) ? $article[0]['libTitrArt'] : "l'article";
+$libTitrArt = !empty($article) ? $article[0]['libTitrArt'] : "l'article";
 ?>
 
 <div class="container mt-5" style="max-width: 600px;">
     <h2>Ajouter un commentaire</h2>
-    <p class="text-muted">Sur l'article : <strong><?= htmlspecialchars($title) ?></strong></p>
+    <p class="text-muted">Sur l'article : <strong><?= htmlspecialchars($libTitrArt) ?></strong></p>
 
-    <form action="/api/comments/create.php" method="post">
+    <form action="/api/comments/create_front.php" method="post">
         <input type="hidden" name="numArt" value="<?= $numArt ?>">
         <input type="hidden" name="numMemb" value="<?= $_SESSION['id_user'] ?>">
 

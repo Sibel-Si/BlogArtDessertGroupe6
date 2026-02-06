@@ -83,3 +83,16 @@ $_SESSION['numStat'] = (int)$membre[0]['numStat'];
 
 header('Location: /');
 exit;
+ <main class="content-grid-container">
+        <div class="bg-illustration muffin">🧁</div>
+        <div class="bg-illustration pain">🍞</div>
+        <div class="bg-illustration croissant">🥐</div>
+        <div class="bg-illustration baguette">🥖</div>
+
+        <div class="grid">
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+        </div>
+    </main>
